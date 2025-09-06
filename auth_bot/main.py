@@ -8,23 +8,33 @@ import asyncio
 import logging
 import signal
 import sys
+import os
 from pathlib import Path
 
 # Add project root to path
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
-from pyrogram import Client
-from pyrogram.errors import ApiIdInvalid, AuthKeyUnregistered, UserDeactivated
-
-from bot.handlers.auth_handler import AuthHandler
-from bot.handlers.token_handler import TokenHandler
-from bot.handlers.payment_handler import PaymentHandler
-from bot.handlers.admin_handler import AdminHandler
-from database.connection import get_database
-from database.operations import DatabaseManager
-from utils.config import Config
-from utils.helpers import create_background_tasks
+# Fix imports for standalone execution
+try:
+    # Try importing with relative imports first
+    from utils.main_config import config, validate_config, print_config_status
+    from utils.token_utils import TokenGenerator
+    from database.models import TokenType
+    
+    # Import pyrogram
+    from pyrogram import Client, filters
+    from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
+    
+    print("[SUCCESS] All imports successful")
+    
+except ImportError as e:
+    print(f"[ERROR] Import error: {e}")
+    print("[ERROR] Please ensure all auth bot components are properly installed")
+    sys.exit(1)
+    print(f"❌ Import error: {e}")
+    print("❌ Please ensure all auth bot components are properly installed")
+    sys.exit(1)
 
 # Setup logging
 logging.basicConfig(

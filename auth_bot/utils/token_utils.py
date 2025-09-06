@@ -9,7 +9,15 @@ from typing import Tuple, Optional
 import uuid
 import logging
 
-from ..database.models import TokenType
+# Fix relative import issue
+try:
+    from ..database.models import TokenType
+except ImportError:
+    # If running as script, use absolute import
+    import sys
+    from pathlib import Path
+    sys.path.append(str(Path(__file__).parent.parent))
+    from database.models import TokenType
 
 logger = logging.getLogger(__name__)
 

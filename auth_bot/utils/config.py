@@ -6,7 +6,10 @@ Handles environment variables and bot registration
 
 import os
 from typing import List, Dict, Any
-from pydantic import BaseSettings
+try:
+    from pydantic_settings import BaseSettings
+except ImportError:
+    from pydantic import BaseSettings
 
 
 class Config(BaseSettings):

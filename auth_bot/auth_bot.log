@@ -1,0 +1,252 @@
+2025-09-05 20:01:59,333 - __main__ - INFO - [START] Starting Simple Auth Bot...
+2025-09-05 20:01:59,333 - __main__ - INFO - [INFO] Make sure to set AUTH_BOT_TOKEN in config.env file
+2025-09-05 20:01:59,334 - __main__ - INFO - [INIT] Initializing Simple Auth Bot...
+2025-09-05 20:01:59,346 - __main__ - INFO - [SUCCESS] Simple Auth Bot initialized successfully
+2025-09-05 20:01:59,346 - __main__ - INFO - [START] Starting Simple Auth Bot...
+2025-09-05 20:01:59,968 - pyrogram.session.auth - INFO - Start creating a new auth key on DC2
+2025-09-05 20:01:59,968 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-05 20:02:00,131 - pyrogram.connection.connection - INFO - Connected! Production DC2 - IPv4
+2025-09-05 20:02:02,015 - pyrogram.session.auth - INFO - Done auth key exchange: DhGenOk
+2025-09-05 20:02:02,015 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-05 20:02:02,026 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-05 20:02:02,184 - pyrogram.connection.connection - INFO - Connected! Production DC2 - IPv4
+2025-09-05 20:02:02,185 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-05 20:02:02,865 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-05 20:02:02,865 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-05 20:02:02,865 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-05 20:02:02,865 - pyrogram.session.session - INFO - Session started
+2025-09-05 20:02:02,867 - pyrogram.session.session - INFO - PingTask started
+2025-09-05 20:02:03,031 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-05 20:02:03,032 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-05 20:02:03,032 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-05 20:02:03,032 - pyrogram.session.session - INFO - Session stopped
+2025-09-05 20:02:03,040 - pyrogram.session.auth - INFO - Start creating a new auth key on DC5
+2025-09-05 20:02:03,040 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-05 20:02:03,176 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-05 20:02:05,009 - pyrogram.session.auth - INFO - Done auth key exchange: DhGenOk
+2025-09-05 20:02:05,010 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-05 20:02:05,018 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-05 20:02:06,251 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-05 20:02:06,251 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-05 20:02:07,210 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-05 20:02:07,210 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-05 20:02:07,210 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-05 20:02:07,211 - pyrogram.session.session - INFO - Session started
+2025-09-05 20:02:07,211 - pyrogram.session.session - INFO - PingTask started
+2025-09-05 20:02:07,968 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-05 20:02:08,228 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-05 20:02:08,228 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-05 20:02:08,229 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-05 20:02:26,179 - utils.token_utils - INFO - Generated UUID4 token for user 1516272776, bot test_bot, type TokenType.FREE
+2025-09-05 20:02:26,180 - utils.token_utils - INFO - Generated UUID4 token 9bf8d50b-37ba-44ee-951d-aed86beb2863 for user 1516272776, bot test_bot, type TokenType.FREE
+2025-09-05 20:02:58,613 - utils.token_utils - INFO - Generated UUID4 token for user 1516272776, bot test_bot, type TokenType.FREE
+2025-09-05 20:02:58,614 - utils.token_utils - INFO - Generated UUID4 token 5d0cafc3-bb20-423e-b6cc-5968e90f243f for user 1516272776, bot test_bot, type TokenType.FREE
+2025-09-05 20:04:43,499 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-05 20:04:43,499 - __main__ - INFO - [STOP] Stopping Simple Auth Bot...
+2025-09-05 20:04:43,505 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-05 20:04:43,506 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-05 20:04:43,506 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-05 20:04:43,506 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-05 20:04:43,506 - pyrogram.session.session - INFO - Session stopped
+2025-09-05 20:04:43,506 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-05 20:06:58,800 - pyrogram.crypto.aes - INFO - Using TgCrypto
+2025-09-05 20:06:59,145 - __main__ - INFO - [SUCCESS] All imports successful
+2025-09-05 20:06:59,145 - __main__ - INFO - [START] Starting Main Auth Bot...
+2025-09-05 20:06:59,145 - __main__ - INFO - [INFO] Full featured auth bot with all handlers
+2025-09-05 20:06:59,146 - __main__ - INFO - [INIT] Initializing Main Auth Bot...
+2025-09-05 20:06:59,148 - __main__ - INFO - [SUCCESS] Main Auth Bot initialized successfully
+2025-09-05 20:06:59,148 - __main__ - INFO - [START] Starting Main Auth Bot...
+2025-09-05 20:06:59,839 - pyrogram.session.auth - INFO - Start creating a new auth key on DC2
+2025-09-05 20:06:59,839 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-05 20:07:00,003 - pyrogram.connection.connection - INFO - Connected! Production DC2 - IPv4
+2025-09-05 20:07:01,744 - pyrogram.session.auth - INFO - Done auth key exchange: DhGenOk
+2025-09-05 20:07:01,745 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-05 20:07:01,761 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-05 20:07:01,923 - pyrogram.connection.connection - INFO - Connected! Production DC2 - IPv4
+2025-09-05 20:07:01,924 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-05 20:07:02,661 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-05 20:07:02,661 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-05 20:07:02,661 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-05 20:07:02,662 - pyrogram.session.session - INFO - Session started
+2025-09-05 20:07:02,664 - pyrogram.session.session - INFO - PingTask started
+2025-09-05 20:07:02,904 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-05 20:07:02,905 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-05 20:07:02,905 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-05 20:07:02,905 - pyrogram.session.session - INFO - Session stopped
+2025-09-05 20:07:02,913 - pyrogram.session.auth - INFO - Start creating a new auth key on DC5
+2025-09-05 20:07:02,913 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-05 20:07:03,049 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-05 20:07:04,734 - pyrogram.session.auth - INFO - Done auth key exchange: DhGenOk
+2025-09-05 20:07:04,734 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-05 20:07:04,744 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-05 20:07:04,875 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-05 20:07:04,875 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-05 20:07:05,462 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-05 20:07:05,463 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-05 20:07:05,463 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-05 20:07:05,463 - pyrogram.session.session - INFO - Session started
+2025-09-05 20:07:05,463 - pyrogram.session.session - INFO - PingTask started
+2025-09-05 20:07:05,923 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-05 20:07:06,083 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-05 20:07:06,083 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-05 20:07:06,083 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-05 20:07:41,505 - utils.token_utils - INFO - Generated UUID4 token for user 1516272776, bot 8251617971, type TokenType.FREE
+2025-09-05 20:07:41,505 - utils.token_utils - INFO - Generated UUID4 token 543573e8-b6ed-413e-b715-03986d846c32 for user 1516272776, bot 8251617971, type TokenType.FREE
+2025-09-05 20:07:41,674 - __main__ - INFO - [TOKEN] Generated free token for user 1516272776 (Akash)
+2025-09-05 20:08:30,716 - utils.token_utils - INFO - Generated UUID4 token for user 1516272776, bot 8251617971, type TokenType.FREE
+2025-09-05 20:08:30,716 - utils.token_utils - INFO - Generated UUID4 token badc3470-0a62-4b3a-a05d-e4d60e92bcb9 for user 1516272776, bot 8251617971, type TokenType.FREE
+2025-09-05 20:08:30,921 - __main__ - INFO - [TOKEN] Generated free token for user 1516272776 (Akash)
+2025-09-05 20:10:18,975 - utils.token_utils - INFO - Generated UUID4 token for user 6534410642, bot 8251617971, type TokenType.FREE
+2025-09-05 20:10:18,976 - utils.token_utils - INFO - Generated UUID4 token b28aa229-90f2-4006-a3db-f539e8e5d0a7 for user 6534410642, bot 8251617971, type TokenType.FREE
+2025-09-05 20:10:19,148 - __main__ - INFO - [TOKEN] Generated free token for user 6534410642 (Chirag)
+2025-09-05 20:10:40,487 - utils.token_utils - INFO - Generated UUID4 token for user 6534410642, bot 8251617971, type TokenType.FREE
+2025-09-05 20:10:40,487 - utils.token_utils - INFO - Generated UUID4 token cc575112-0fd0-4f90-91da-7600152a1a98 for user 6534410642, bot 8251617971, type TokenType.FREE
+2025-09-05 20:10:49,402 - utils.token_utils - INFO - Generated UUID4 token for user 6534410642, bot 8251617971, type TokenType.FREE
+2025-09-05 20:10:49,402 - utils.token_utils - INFO - Generated UUID4 token 90bf8e25-8191-46fa-9ec7-d7413af61a79 for user 6534410642, bot 8251617971, type TokenType.FREE
+2025-09-05 20:10:49,569 - __main__ - INFO - [TOKEN] Generated free token for user 6534410642 (Chirag)
+2025-09-06 20:00:43,191 - pyrogram.crypto.aes - INFO - Using TgCrypto
+2025-09-06 20:00:44,975 - __main__ - INFO - [SUCCESS] All imports successful
+2025-09-06 20:00:44,976 - __main__ - INFO - [START] Starting Main Auth Bot...
+2025-09-06 20:00:44,976 - __main__ - INFO - [INFO] Full featured auth bot with all handlers
+2025-09-06 20:00:44,979 - __main__ - INFO - [INIT] Initializing Main Auth Bot...
+2025-09-06 20:00:44,980 - __main__ - INFO - [SUCCESS] Main Auth Bot initialized successfully
+2025-09-06 20:00:44,980 - __main__ - INFO - [START] Starting Main Auth Bot...
+2025-09-06 20:00:45,782 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-06 20:00:46,164 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-06 20:00:46,166 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-06 20:00:47,881 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-06 20:00:47,881 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-06 20:00:47,882 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-06 20:00:47,882 - pyrogram.session.session - INFO - Session started
+2025-09-06 20:00:47,884 - pyrogram.session.session - INFO - PingTask started
+2025-09-06 20:00:48,773 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-06 20:00:49,209 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-06 20:00:49,209 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-06 20:00:49,209 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-06 20:02:15,451 - utils.token_utils - INFO - Generated UUID4 token for user 1516272776, bot 8251617971, type TokenType.FREE
+2025-09-06 20:02:15,451 - utils.token_utils - INFO - Generated UUID4 token bfec641a-fc99-4996-b949-37b7f21f2194 for user 1516272776, bot 8251617971, type TokenType.FREE
+2025-09-06 20:02:15,931 - __main__ - INFO - [TOKEN] Generated free token for user 1516272776 (Akash)
+2025-09-06 20:03:07,518 - utils.token_utils - INFO - Generated UUID4 token for user 1516272776, bot 8251617971, type TokenType.FREE
+2025-09-06 20:03:07,519 - utils.token_utils - INFO - Generated UUID4 token 8b2d59f1-2a61-4ff1-a9ef-6f5239243d2e for user 1516272776, bot 8251617971, type TokenType.FREE
+2025-09-06 20:20:58,964 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-06 20:20:58,965 - __main__ - INFO - [STOP] Stopping Main Auth Bot...
+2025-09-06 20:20:58,983 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-06 20:20:58,983 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-06 20:20:58,984 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-06 20:20:58,984 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-06 20:20:58,984 - pyrogram.session.session - INFO - Session stopped
+2025-09-06 20:20:58,984 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-06 20:21:25,155 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-06 20:21:25,156 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-06 20:21:25,157 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-06 20:21:25,167 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-06 20:21:25,168 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-06 20:21:25,867 - pyrogram.session.auth - INFO - Start creating a new auth key on DC2
+2025-09-06 20:21:25,868 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-06 20:21:26,194 - pyrogram.connection.connection - INFO - Connected! Production DC2 - IPv4
+2025-09-06 20:21:28,652 - pyrogram.session.auth - INFO - Done auth key exchange: DhGenOk
+2025-09-06 20:21:28,652 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-06 20:21:28,668 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-06 20:21:28,981 - pyrogram.connection.connection - INFO - Connected! Production DC2 - IPv4
+2025-09-06 20:21:28,982 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-06 20:21:30,307 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-06 20:21:30,308 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-06 20:21:30,308 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-06 20:21:30,308 - pyrogram.session.session - INFO - Session started
+2025-09-06 20:21:30,309 - pyrogram.session.session - INFO - PingTask started
+2025-09-06 20:21:30,664 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-06 20:21:30,664 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-06 20:21:30,664 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-06 20:21:30,664 - pyrogram.session.session - INFO - Session stopped
+2025-09-06 20:21:30,678 - pyrogram.session.auth - INFO - Start creating a new auth key on DC5
+2025-09-06 20:21:30,679 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-06 20:21:30,924 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-06 20:21:33,113 - pyrogram.session.auth - INFO - Done auth key exchange: DhGenOk
+2025-09-06 20:21:33,114 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-06 20:21:33,127 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-06 20:21:33,371 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-06 20:21:33,372 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-06 20:21:34,432 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-06 20:21:34,432 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-06 20:21:34,432 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-06 20:21:34,432 - pyrogram.session.session - INFO - Session started
+2025-09-06 20:21:34,433 - pyrogram.session.session - INFO - PingTask started
+2025-09-06 20:21:35,244 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-06 20:21:35,511 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-06 20:21:35,512 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-06 20:21:35,512 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-06 20:25:17,490 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-06 20:25:17,490 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-06 20:25:17,506 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-06 20:25:17,506 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-06 20:25:17,506 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-06 20:25:17,507 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-06 20:25:17,507 - pyrogram.session.session - INFO - Session stopped
+2025-09-06 20:25:17,507 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-06 20:25:36,568 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-06 20:25:36,568 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-06 20:25:36,569 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-06 20:25:36,573 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-06 20:25:36,573 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-06 20:25:37,176 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-06 20:25:37,547 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-06 20:25:37,548 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-06 20:25:39,190 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-06 20:25:39,190 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-06 20:25:39,190 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-06 20:25:39,190 - pyrogram.session.session - INFO - Session started
+2025-09-06 20:25:39,193 - pyrogram.session.session - INFO - PingTask started
+2025-09-06 20:25:39,918 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-06 20:25:40,245 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-06 20:25:40,246 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-06 20:25:40,246 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-06 20:30:48,169 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-06 20:30:48,169 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-06 20:30:48,178 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-06 20:30:48,178 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-06 20:30:48,179 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-06 20:30:48,179 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-06 20:30:48,179 - pyrogram.session.session - INFO - Session stopped
+2025-09-06 20:30:48,179 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-06 20:32:28,363 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-06 20:32:28,363 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-06 20:32:28,364 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-06 20:32:28,368 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-06 20:32:28,368 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-06 20:32:29,127 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-06 20:32:29,550 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-06 20:32:29,551 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-06 20:32:31,166 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-06 20:32:31,166 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-06 20:32:31,167 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-06 20:32:31,167 - pyrogram.session.session - INFO - Session started
+2025-09-06 20:32:31,170 - pyrogram.session.session - INFO - PingTask started
+2025-09-06 20:32:31,928 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-06 20:32:32,430 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-06 20:32:32,430 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-06 20:32:32,430 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-06 20:50:54,718 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-06 20:50:54,719 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-06 20:50:54,728 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-06 20:50:54,729 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-06 20:50:54,729 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-06 20:50:54,729 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-06 20:50:54,730 - pyrogram.session.session - INFO - Session stopped
+2025-09-06 20:50:54,730 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-06 20:50:55,515 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-06 20:50:55,515 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-06 20:50:55,516 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-06 20:50:55,522 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-06 20:50:55,522 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-06 20:50:56,280 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-06 20:50:56,571 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-06 20:50:56,573 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-06 20:50:57,789 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-06 20:50:57,789 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-06 20:50:57,789 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-06 20:50:57,789 - pyrogram.session.session - INFO - Session started
+2025-09-06 20:50:57,793 - pyrogram.session.session - INFO - PingTask started
+2025-09-06 20:50:58,468 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-06 20:50:58,783 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-06 20:50:58,784 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-06 20:50:58,784 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
