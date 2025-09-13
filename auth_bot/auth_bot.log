@@ -250,3 +250,232 @@
 2025-09-06 20:50:58,783 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
 2025-09-06 20:50:58,784 - __main__ - INFO - [INFO] Bot ID: 8367002066
 2025-09-06 20:50:58,784 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-06 21:02:36,792 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-06 21:02:36,792 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-06 21:02:36,793 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-06 21:02:36,797 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-06 21:02:36,798 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-06 21:02:37,387 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-06 21:02:37,713 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-06 21:02:37,714 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-06 21:02:39,043 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-06 21:02:39,043 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-06 21:02:39,043 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-06 21:02:39,043 - pyrogram.session.session - INFO - Session started
+2025-09-06 21:02:39,046 - pyrogram.session.session - INFO - PingTask started
+2025-09-06 21:02:39,741 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-06 21:02:40,101 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-06 21:02:40,101 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-06 21:02:40,101 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-06 21:02:52,356 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-06 21:02:52,356 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-06 21:02:52,364 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-06 21:02:52,364 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-06 21:02:52,365 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-06 21:02:52,365 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-06 21:02:52,365 - pyrogram.session.session - INFO - Session stopped
+2025-09-06 21:02:52,365 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-06 21:09:01,271 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-06 21:09:01,271 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-06 21:09:01,272 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-06 21:09:01,277 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-06 21:09:01,277 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-06 21:09:01,920 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-06 21:09:02,187 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-06 21:09:02,188 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-06 21:09:03,379 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-06 21:09:03,379 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-06 21:09:03,379 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-06 21:09:03,380 - pyrogram.session.session - INFO - Session started
+2025-09-06 21:09:03,382 - pyrogram.session.session - INFO - PingTask started
+2025-09-06 21:09:04,670 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-06 21:09:05,620 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-06 21:09:05,620 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-06 21:09:05,620 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-06 21:21:31,788 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-06 21:21:31,788 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-06 21:21:31,800 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-06 21:21:31,801 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-06 21:21:31,801 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-06 21:21:31,801 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-06 21:21:31,801 - pyrogram.session.session - INFO - Session stopped
+2025-09-06 21:21:31,802 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-08 20:59:40,591 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-08 20:59:40,591 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-08 20:59:40,592 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-08 20:59:40,606 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-08 20:59:40,607 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-08 20:59:41,277 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-08 20:59:41,530 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-08 20:59:41,532 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-08 20:59:42,691 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-08 20:59:42,692 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-08 20:59:42,692 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-08 20:59:42,692 - pyrogram.session.session - INFO - Session started
+2025-09-08 20:59:42,695 - pyrogram.session.session - INFO - PingTask started
+2025-09-08 20:59:43,987 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-08 20:59:44,360 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-08 20:59:44,360 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-08 20:59:44,360 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-08 21:06:08,959 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-08 21:06:08,960 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-08 21:06:08,984 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-08 21:06:08,984 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-08 21:06:08,985 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-08 21:06:08,985 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-08 21:06:08,985 - pyrogram.session.session - INFO - Session stopped
+2025-09-08 21:06:08,985 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-08 21:06:37,303 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-08 21:06:37,304 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-08 21:06:37,305 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-08 21:06:37,309 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-08 21:06:37,309 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-08 21:06:37,904 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-08 21:06:37,998 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-08 21:06:37,999 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-08 21:06:38,466 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-08 21:06:38,467 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-08 21:06:38,467 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-08 21:06:38,467 - pyrogram.session.session - INFO - Session started
+2025-09-08 21:06:38,469 - pyrogram.session.session - INFO - PingTask started
+2025-09-08 21:06:38,712 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-08 21:06:38,837 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-08 21:06:38,838 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-08 21:06:38,838 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-08 21:11:06,121 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-08 21:11:06,121 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-08 21:11:06,137 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-08 21:11:06,137 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-08 21:11:06,137 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-08 21:11:06,137 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-08 21:11:06,138 - pyrogram.session.session - INFO - Session stopped
+2025-09-08 21:11:06,138 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-08 21:11:10,078 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-08 21:11:10,079 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-08 21:11:10,080 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-08 21:11:10,085 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-08 21:11:10,085 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-08 21:11:10,707 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-08 21:11:10,899 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-08 21:11:10,900 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-08 21:11:11,805 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-08 21:11:11,805 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-08 21:11:11,806 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-08 21:11:11,806 - pyrogram.session.session - INFO - Session started
+2025-09-08 21:11:11,808 - pyrogram.session.session - INFO - PingTask started
+2025-09-08 21:11:12,279 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-08 21:11:12,489 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-08 21:11:12,490 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-08 21:11:12,490 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-08 21:16:39,217 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-08 21:16:39,217 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-08 21:16:39,234 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-08 21:16:39,234 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-08 21:16:39,234 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-08 21:16:39,235 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-08 21:16:39,235 - pyrogram.session.session - INFO - Session stopped
+2025-09-08 21:16:39,235 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-08 21:20:57,684 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-08 21:20:57,685 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-08 21:20:57,686 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-08 21:20:57,690 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-08 21:20:57,690 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-08 21:20:58,368 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-08 21:20:58,498 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-08 21:20:58,498 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-08 21:20:59,239 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-08 21:20:59,240 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-08 21:20:59,240 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-08 21:20:59,240 - pyrogram.session.session - INFO - Session started
+2025-09-08 21:20:59,242 - pyrogram.session.session - INFO - PingTask started
+2025-09-08 21:20:59,785 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-08 21:21:00,063 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-08 21:21:00,063 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-08 21:21:00,063 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-08 21:21:05,620 - pyrogram.parser.html - INFO - Unclosed tags: <b> (x1)
+2025-09-08 21:21:05,912 - pyrogram.parser.html - INFO - Unclosed tags: <b> (x1)
+2025-09-08 21:21:06,562 - pyrogram.parser.html - INFO - Unclosed tags: <b> (x1)
+2025-09-08 21:21:06,810 - pyrogram.parser.html - INFO - Unclosed tags: <b> (x1)
+2025-09-08 21:21:07,086 - pyrogram.parser.html - INFO - Unclosed tags: <b> (x1)
+2025-09-08 21:21:07,410 - pyrogram.parser.html - INFO - Unclosed tags: <b> (x1)
+2025-09-08 21:21:07,735 - pyrogram.parser.html - INFO - Unclosed tags: <b> (x1)
+2025-09-08 21:21:07,997 - pyrogram.parser.html - INFO - Unclosed tags: <b> (x1)
+2025-09-08 21:21:08,243 - pyrogram.parser.html - INFO - Unclosed tags: <b> (x1)
+2025-09-08 21:21:08,521 - pyrogram.parser.html - INFO - Unclosed tags: <b> (x1)
+2025-09-08 21:21:08,799 - pyrogram.parser.html - INFO - Unclosed tags: <b> (x1)
+2025-09-08 21:21:09,033 - pyrogram.parser.html - INFO - Unclosed tags: <b> (x1)
+2025-09-08 21:21:54,630 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-08 21:21:54,630 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-08 21:21:54,639 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-08 21:21:54,639 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-08 21:21:54,640 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-08 21:21:54,640 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-08 21:21:54,640 - pyrogram.session.session - INFO - Session stopped
+2025-09-08 21:21:54,640 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-08 21:26:34,715 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-08 21:26:34,715 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-08 21:26:34,717 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-08 21:26:34,721 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-08 21:26:34,722 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-08 21:26:35,352 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-08 21:26:35,698 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-08 21:26:35,699 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-08 21:26:37,231 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-08 21:26:37,231 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-08 21:26:37,231 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-08 21:26:37,231 - pyrogram.session.session - INFO - Session started
+2025-09-08 21:26:37,234 - pyrogram.session.session - INFO - PingTask started
+2025-09-08 21:26:38,002 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-08 21:26:38,349 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-08 21:26:38,349 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-08 21:26:38,349 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-08 22:10:33,889 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-08 22:10:33,889 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-08 22:10:33,897 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-08 22:10:33,897 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-08 22:10:33,898 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-08 22:10:33,898 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-08 22:10:33,898 - pyrogram.session.session - INFO - Session stopped
+2025-09-08 22:10:33,898 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-08 22:23:53,458 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-08 22:23:53,458 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-08 22:23:53,459 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-08 22:23:53,464 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-08 22:23:53,464 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-08 22:23:54,157 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-08 22:23:54,525 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-08 22:23:54,526 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-08 22:23:55,999 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-08 22:23:56,000 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-08 22:23:56,000 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-08 22:23:56,000 - pyrogram.session.session - INFO - Session started
+2025-09-08 22:23:56,002 - pyrogram.session.session - INFO - PingTask started
+2025-09-08 22:23:56,756 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-08 22:23:57,144 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-08 22:23:57,145 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-08 22:23:57,145 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-08 22:24:08,677 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-08 22:24:08,677 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-08 22:24:08,686 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-08 22:24:08,686 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-08 22:24:08,687 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-08 22:24:08,687 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-08 22:24:08,687 - pyrogram.session.session - INFO - Session stopped
+2025-09-08 22:24:08,687 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-08 22:34:12,458 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-08 22:34:12,458 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-08 22:34:12,459 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-08 22:34:12,463 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-08 22:34:12,464 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-08 22:34:13,076 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-08 22:34:13,332 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4
+2025-09-08 22:34:13,333 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-08 22:34:14,485 - pyrogram.session.session - INFO - Session initialized: Layer 158
+2025-09-08 22:34:14,485 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.106
+2025-09-08 22:34:14,485 - pyrogram.session.session - INFO - System: Windows 11 (en)
+2025-09-08 22:34:14,485 - pyrogram.session.session - INFO - Session started
+2025-09-08 22:34:14,488 - pyrogram.session.session - INFO - PingTask started
+2025-09-08 22:34:15,110 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-08 22:34:15,398 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-08 22:34:15,399 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-08 22:34:15,399 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot

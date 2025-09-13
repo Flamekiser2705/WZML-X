@@ -1,21 +1,22 @@
 # WZML-X Auth Bot Setup & Configuration Guide
 
 ## 📋 Table of Contents
-1. [Overview](#overview)
-2. [Prerequisites](#prerequisites)
-3. [Initial Setup](#initial-setup)
-4. [Bot Configuration](#bot-configuration)
-5. [Adding Mirror Bots](#adding-mirror-bots)
-6. [User Commands](#user-commands)
-7. [Admin Commands](#admin-commands)
-8. [Troubleshooting](#troubleshooting)
-9. [API Integration](#api-integration)
+
+1. [Overview](#overview)[Prerequisites](#prerequisites)
+2. [Initial Setup](#initial-setup)
+3. [Bot Configuration](#bot-configuration)
+4. [Adding Mirror Bots](#adding-mirror-bots)
+5. [User Commands](#user-commands)
+6. [Admin Commands](#admin-commands)
+7. [Troubleshooting](#troubleshooting)
+8. [API Integration](#api-integration)
 
 ---
 
 ## 🎯 Overview
 
 The WZML-X Auth Bot is a separate authentication system that provides:
+
 - **Free 6-hour tokens** for single or multiple bots
 - **Premium subscriptions** (7/30/90 days)
 - **Real-time bot availability** checking
@@ -27,11 +28,13 @@ The WZML-X Auth Bot is a separate authentication system that provides:
 ## ⚡ Prerequisites
 
 ### Required Software
+
 - **Python 3.8+** (tested with Python 3.13.2)
 - **MongoDB** database access
 - **Telegram Bot Token** from [@BotFather](https://t.me/BotFather)
 
 ### Required API Credentials
+
 - `TELEGRAM_API` - Your Telegram API ID
 - `TELEGRAM_HASH` - Your Telegram API Hash
 - `BOT_TOKEN` - Auth bot token from BotFather
@@ -42,13 +45,16 @@ The WZML-X Auth Bot is a separate authentication system that provides:
 ## 🚀 Initial Setup
 
 ### 1. Install Dependencies
+
 ```bash
 cd auth_bot/
 pip install pyrogram motor aiohttp pymongo
 ```
 
 ### 2. Configure Environment
+
 Create or update your main `config.env` file with:
+
 ```env
 # Telegram API (from my.telegram.org)
 TELEGRAM_API = 25888025
@@ -65,6 +71,7 @@ ADMIN_IDS = 123456789,987654321
 ```
 
 ### 3. Start the Auth Bot
+
 ```bash
 python wzml_auth_bot.py
 ```
@@ -74,7 +81,9 @@ python wzml_auth_bot.py
 ## 🤖 Bot Configuration
 
 ### Initial State
+
 When first started, the bot will show:
+
 ```
 ❌ No Mirror Leech Bots Available
 All bots are currently offline or not configured.
@@ -83,12 +92,15 @@ All bots are currently offline or not configured.
 This is **normal behavior** - you need to add mirror bots first.
 
 ### Adding Your First Bot
+
 Use the admin command to add mirror bots:
+
 ```
 /addbot <bot_username> <bot_token> <display_name>
 ```
 
 **Example:**
+
 ```
 /addbot MirrorBot1 1234567890:AAEFGHijklmnopQRSTuvwxyz123456789 Mirror Leech Bot 1
 ```
@@ -98,6 +110,7 @@ Use the admin command to add mirror bots:
 ## 🔧 Adding Mirror Bots
 
 ### Method 1: Admin Commands (Recommended)
+
 ```bash
 # Add a new bot
 /addbot <username> <token> <name>
@@ -116,7 +129,9 @@ Use the admin command to add mirror bots:
 ```
 
 ### Method 2: Manual JSON Configuration
+
 Edit `bot_configs.json` directly:
+
 ```json
 {
   "wzmlx_bot": {
@@ -131,6 +146,7 @@ Edit `bot_configs.json` directly:
 ```
 
 ### Method 3: Programmatic Addition
+
 ```python
 from bot_manager import BotManager
 
@@ -147,6 +163,7 @@ await bot_manager.add_bot(
 ## 👥 User Commands
 
 ### Basic Commands
+
 ```bash
 /start          # Welcome message and bot info
 /verify         # Start verification process
@@ -155,6 +172,7 @@ await bot_manager.add_bot(
 ```
 
 ### Verification Process
+
 1. User sends `/verify`
 2. Choose token type:
    - **Single Bot Token** (6 hours)
@@ -164,6 +182,7 @@ await bot_manager.add_bot(
 4. Token generated automatically (UUID4 format)
 
 ### Token Format
+
 ```
 Example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
 ```
@@ -173,6 +192,7 @@ Example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
 ## 🔐 Admin Commands
 
 ### Bot Management
+
 ```bash
 # Add new mirror bot
 /addbot <username> <token> <display_name>
@@ -191,6 +211,7 @@ Example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
 ```
 
 ### System Management
+
 ```bash
 # View detailed statistics
 /stats
@@ -203,6 +224,7 @@ Example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
 ```
 
 ### Example Admin Session
+
 ```bash
 # Add multiple bots
 /addbot wzmlx1 1234567890:AAE... WZML-X Bot 1
@@ -223,8 +245,10 @@ Example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
 ### Common Issues
 
 #### 1. "No Mirror Leech Bots Available"
+
 **Cause:** No bots configured or all bots offline
 **Solution:**
+
 ```bash
 # Check current bots
 /listbots
@@ -237,13 +261,16 @@ Example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
 ```
 
 #### 2. Bot Shows as "Offline" or "Error"
+
 **Possible Causes:**
+
 - Invalid bot token
 - Bot is stopped/deleted
 - Network connectivity issues
 - Bot not started by owner
 
 **Solution:**
+
 ```bash
 # Remove problematic bot
 /removebot problematic_bot
@@ -253,20 +280,26 @@ Example: a1b2c3d4-e5f6-7890-abcd-ef1234567890
 ```
 
 #### 3. MongoDB Connection Error
+
 **Check:**
+
 - MongoDB URI is correct
 - Database cluster is running
 - Network access allowed
 - Credentials are valid
 
 #### 4. Telegram API Errors
+
 **Check:**
+
 - `TELEGRAM_API` and `TELEGRAM_HASH` are correct
 - Bot token is valid
 - Bot is not rate-limited
 
 ### Debug Mode
+
 Enable detailed logging by setting:
+
 ```python
 import logging
 logging.basicConfig(level=logging.DEBUG)
@@ -277,9 +310,11 @@ logging.basicConfig(level=logging.DEBUG)
 ## 🔗 API Integration
 
 ### For Mirror Bot Integration
+
 Mirror bots should check user verification via HTTP endpoints:
 
 #### Check User Verification
+
 ```python
 import aiohttp
 
@@ -301,6 +336,7 @@ async def check_user_verification(user_id, bot_key):
 ```
 
 #### FastAPI Endpoints (to be implemented)
+
 ```python
 @app.get("/verify/{user_id}/{bot_key}")
 async def verify_user(user_id: int, bot_key: str):
@@ -318,12 +354,14 @@ async def get_user_tokens(user_id: int):
 ## 📊 Bot Status Indicators
 
 ### Status Types
+
 - ✅ **Active** - Bot is online and responding
 - ❌ **Error** - Bot token invalid or bot crashed
 - ⚪ **Inactive** - Bot configured but not responding
 - ⚙️ **Not Configured** - Bot exists but needs setup
 
 ### Auto-Refresh
+
 - Bot status is checked every 5 minutes automatically
 - Manual refresh available via "🔄 Refresh Status" button
 - Failed bots are rechecked more frequently
@@ -333,7 +371,9 @@ async def get_user_tokens(user_id: int):
 ## 🚀 Advanced Configuration
 
 ### Custom Token Duration
+
 Modify in `wzml_auth_bot.py`:
+
 ```python
 # Free token duration (default: 6 hours)
 FREE_TOKEN_HOURS = 6
@@ -347,14 +387,18 @@ PREMIUM_DURATIONS = {
 ```
 
 ### Database Persistence
+
 Switch from in-memory to MongoDB:
+
 ```python
 # Replace user_tokens dictionary with MongoDB collection
 self.user_collection = self.db["user_tokens"]
 ```
 
 ### Custom Bot Themes
+
 Create custom message templates in `wzml_auth_bot.py`:
+
 ```python
 WELCOME_TEXT = """
 🤖 **Welcome to {bot_name}**
@@ -367,18 +411,21 @@ Custom welcome message here...
 ## 📝 Best Practices
 
 ### Security
+
 1. **Never share bot tokens** in public
 2. **Use environment variables** for sensitive data
 3. **Regularly rotate tokens** if compromised
 4. **Monitor bot access logs**
 
 ### Performance
+
 1. **Limit concurrent token requests**
 2. **Cache bot status** for 5-10 minutes
 3. **Use background tasks** for availability checks
 4. **Monitor database connection pool**
 
 ### Maintenance
+
 1. **Regular database backups**
 2. **Monitor bot uptime**
 3. **Clean expired tokens** periodically
@@ -389,12 +436,14 @@ Custom welcome message here...
 ## 🆘 Support
 
 ### Getting Help
+
 1. Check this documentation first
 2. Review error logs in terminal
 3. Test with a single bot first
 4. Verify all credentials are correct
 
 ### Common Commands for Testing
+
 ```bash
 # Quick test sequence
 /start
@@ -413,22 +462,26 @@ Custom welcome message here...
 ## 📋 Checklist for Setup
 
 ### ✅ Pre-Setup
+
 - [ ] Python 3.8+ installed
 - [ ] MongoDB access configured
 - [ ] Telegram API credentials obtained
 - [ ] Bot token from @BotFather
 
 ### ✅ Configuration
+
 - [ ] `config.env` updated with credentials
 - [ ] Dependencies installed (`pip install -r requirements.txt`)
 - [ ] Admin user IDs configured
 
 ### ✅ Bot Management
+
 - [ ] At least one mirror bot added via `/addbot`
 - [ ] Bot status checked via `/checkbots`
 - [ ] Test verification flow with `/verify`
 
 ### ✅ Testing
+
 - [ ] User can see bot selection buttons
 - [ ] Tokens are generated successfully
 - [ ] Token expiration tracking works
@@ -439,14 +492,18 @@ Custom welcome message here...
 ## 🔄 Updates & Migration
 
 ### Version Updates
+
 When updating the auth bot:
+
 1. **Backup** `bot_configs.json`
 2. **Backup** MongoDB user data
 3. **Test** in development environment first
 4. **Update** dependencies if needed
 
 ### Data Migration
+
 If changing database structure:
+
 ```python
 # Migration script example
 async def migrate_user_data():
