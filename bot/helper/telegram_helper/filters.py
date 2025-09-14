@@ -5,6 +5,7 @@ from pyrogram.enums import ChatType
 from bot import user_data, OWNER_ID, config_dict
 from bot.helper.telegram_helper.message_utils import chat_info
 from bot.helper.telegram_helper.unauthorized_message import send_unauthorized_message
+from bot.helper.ext_utils.auth_handler import is_user_authorized
 
 
 class CustomFilters:
@@ -19,6 +20,8 @@ class CustomFilters:
     async def authorized_user(self, _, message):
         user = message.from_user or message.sender_chat
         uid = user.id
+        
+        # Check traditional authorization first (owner, sudo, etc)
         if bool(
             uid == OWNER_ID
             or (
@@ -30,6 +33,14 @@ class CustomFilters:
             )
         ):
             return True
+
+        # Check auth bot authorization
+        try:
+            if await is_user_authorized(uid):
+                return True
+        except Exception as e:
+            # Log error but don't break the filter
+            print(f"Auth bot check failed: {e}")
 
         auth_chat = False
         chat_id = message.chat.id

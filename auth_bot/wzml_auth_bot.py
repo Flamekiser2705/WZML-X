@@ -42,14 +42,19 @@ class WZMLAuthBot:
         self.start_time = datetime.now()
         self.bot_manager = None
         
-        # In-memory storage for demo (replace with database later)
-        self.user_tokens = {}
-        self.user_stats = {"total_users": 0, "total_tokens": 0}
+        # MongoDB database integration for persistent storage
+        self.db = None
+        self.user_collection = None
+        self.tokens_collection = None
+        self.stats_collection = None
     
     async def initialize(self):
         """Initialize the bot"""
         try:
             logger.info("[INIT] Initializing WZML-X Auth Bot...")
+            
+            # Initialize MongoDB connection
+            await self._init_database()
             
             # Load config from main project
             from utils.main_config import config, validate_config, print_config_status
@@ -92,6 +97,38 @@ class WZMLAuthBot:
             
         except Exception as e:
             logger.error(f"[ERROR] Failed to initialize bot: {e}")
+            return False
+    
+    async def _init_database(self):
+        """Initialize MongoDB database connection"""
+        try:
+            from motor.motor_asyncio import AsyncIOMotorClient
+            from utils.main_config import config
+            
+            if not config.MONGODB_URI:
+                logger.error("[ERROR] MONGODB_URI not configured")
+                return False
+                
+            # Connect to MongoDB
+            self.client = AsyncIOMotorClient(config.MONGODB_URI)
+            self.db = self.client.wzmlx_auth
+            
+            # Initialize collections
+            self.user_collection = self.db.users
+            self.tokens_collection = self.db.tokens
+            self.stats_collection = self.db.stats
+            
+            # Create indexes for better performance
+            await self.tokens_collection.create_index("user_id")
+            await self.tokens_collection.create_index("expires_at")
+            await self.tokens_collection.create_index("token")
+            await self.user_collection.create_index("user_id")
+            
+            logger.info("[SUCCESS] MongoDB connection established")
+            return True
+            
+        except Exception as e:
+            logger.error(f"[ERROR] Database initialization failed: {e}")
             return False
     
     def setup_handlers(self):
@@ -572,14 +609,14 @@ Please try another bot or contact admin.
                 await self.verify_individual_token(callback_query, token_num)
             
             elif data.startswith("verify_shortener_"):
-                # Handle shortener verification (demo for now)
+                # Handle real shortener verification with GPLinks API
                 token_num = data.replace("verify_shortener_", "")
-                await self.complete_token_verification(callback_query, token_num)
+                await self.start_shortener_verification(callback_query, token_num)
             
             elif data.startswith("mark_verified_"):
-                # Mark token as verified (demo shortener completion)
+                # Complete shortener verification and mark token as verified
                 token_num = data.replace("mark_verified_", "")
-                await self.mark_token_verified(callback_query, token_num)
+                await self.complete_shortener_verification(callback_query, token_num)
             
             elif data.startswith("verified_token_"):
                 # User clicked on already verified token
@@ -626,6 +663,21 @@ Please try another bot or contact admin.
             elif data == "cooldown_info":
                 # Show cooldown information
                 await callback_query.answer("⏳ This shortener is on cooldown. Please wait before using it again.", show_alert=True)
+            
+            elif data.startswith("buy_"):
+                # Handle premium plan purchase
+                plan_type = data.replace("buy_", "")
+                await self.show_payment_options(callback_query, plan_type)
+            
+            elif data.startswith("pay_razorpay_"):
+                # Handle Razorpay payment
+                plan_type = data.replace("pay_razorpay_", "")
+                await self.process_razorpay_payment(callback_query, plan_type)
+            
+            elif data.startswith("pay_paypal_"):
+                # Handle PayPal payment
+                plan_type = data.replace("pay_paypal_", "")
+                await self.process_paypal_payment(callback_query, plan_type)
             
             elif data == "close_menu":
                 await callback_query.message.delete()
@@ -1317,10 +1369,10 @@ You are Verified with **{verified_count} token**.
 • No ads
 
 💳 **Payment Methods:**
-• UPI/Card (Razorpay)
-• PayPal (International)
+• UPI/Card (Razorpay) - ₹ Indian Rupees
+• PayPal (International) - $ US Dollars
 
-⚠️ **Note:** Payment integration coming soon!
+💎 **Choose Your Plan:**
 """
         
         keyboard = InlineKeyboardMarkup([
@@ -1668,6 +1720,325 @@ Select a shortener service to complete Token {token_num} verification:
         """Handle shutdown signals"""
         logger.info(f"[SIGNAL] Received signal {signum}")
         self.shutdown_event.set()
+    
+    async def start_shortener_verification(self, callback_query, token_num):
+        """Start real shortener verification for a specific token"""
+        user = callback_query.from_user
+        
+        # Check if user has active multi-session
+        user_data = await self.user_collection.find_one({"user_id": user.id})
+        if not user_data or "multi_session" not in user_data:
+            await callback_query.message.edit_text("❌ No active token session found.")
+            return
+        
+        token_key = f"token_{token_num}"
+        token_data = user_data["multi_session"].get(token_key)
+        
+        if not token_data:
+            await callback_query.message.edit_text("❌ Invalid token number.")
+            return
+        
+        if token_data.get("verified", False):
+            await callback_query.answer(f"✅ Token {token_num} is already verified!", show_alert=True)
+            return
+        
+        # Start verification session with shortener manager
+        verification_token = self.shortener_manager.start_verification_session(
+            user.id, "gplinks.com", token_data["bot_key"], "multi", {"current_token": token_num}
+        )
+        
+        # Generate real GPLinks verification URL
+        from shortener_handler import short_url
+        original_url = f"https://t.me/{self.app.me.username}?start=verify_{verification_token}_{user.id}"
+        verification_url = short_url(original_url)
+        
+        # Store verification data
+        await self.user_collection.update_one(
+            {"user_id": user.id},
+            {"$set": {f"verification_data.{token_num}": {
+                "verification_token": verification_token,
+                "verification_url": verification_url,
+                "token_key": token_key,
+                "timestamp": datetime.now().isoformat()
+            }}},
+            upsert=True
+        )
+        
+        verification_text = f"""
+🔗 **Token {token_num} Verification**
+
+**Hey, {user.first_name}!**
+
+Click the verification link below to complete Token {token_num} verification:
+
+🔗 **Verification Link:** {verification_url}
+
+⚠️ **Important:**
+• Click the link and wait for the page to load completely
+• Don't use VPN, adblockers, or bots
+• Use Chrome browser for best results
+• Link expires in 10 minutes
+
+**Progress:** {token_num}/4 tokens
+"""
+        
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("🔗 Open Verification Link", url=verification_url)],
+            [InlineKeyboardButton("✅ I've Completed Verification", callback_data=f"mark_verified_{token_num}")],
+            [InlineKeyboardButton("🔙 Back to Tokens", callback_data="back_to_multi_tokens")],
+            [InlineKeyboardButton("✖ Close", callback_data="close_menu")]
+        ])
+        
+        await callback_query.message.edit_text(verification_text, reply_markup=keyboard)
+    
+    async def complete_shortener_verification(self, callback_query, token_num):
+        """Complete shortener verification and mark token as verified"""
+        user = callback_query.from_user
+        
+        # Check verification data
+        user_data = await self.user_collection.find_one({"user_id": user.id})
+        if not user_data or "verification_data" not in user_data:
+            await callback_query.answer("❌ No verification data found.", show_alert=True)
+            return
+        
+        verification_info = user_data["verification_data"].get(str(token_num))
+        if not verification_info:
+            await callback_query.answer("❌ Verification session not found.", show_alert=True)
+            return
+        
+        # Check if verification session is still valid (10 minutes)
+        verification_time = datetime.fromisoformat(verification_info["timestamp"])
+        if datetime.now() - verification_time > timedelta(minutes=10):
+            await callback_query.answer("❌ Verification session expired. Please try again.", show_alert=True)
+            return
+        
+        # Mark token as verified in database
+        await self.user_collection.update_one(
+            {"user_id": user.id},
+            {
+                "$set": {f"multi_session.token_{token_num}.verified": True},
+                "$unset": {f"verification_data.{token_num}": ""}
+            }
+        )
+        
+        # Get updated user data
+        user_data = await self.user_collection.find_one({"user_id": user.id})
+        session_data = user_data["multi_session"]
+        verified_count = sum(1 for t in session_data.values() if t.get("verified", False))
+        
+        # Add to main tokens collection if verified
+        token_data = session_data[f"token_{token_num}"]
+        await self.tokens_collection.update_one(
+            {"user_id": user.id, "bot_key": token_data["bot_key"]},
+            {
+                "$set": {
+                    "token": token_data["token"],
+                    "expires_at": token_data["expires_at"],
+                    "type": "free_multi",
+                    "verified": True,
+                    "updated_at": datetime.now().isoformat()
+                }
+            },
+            upsert=True
+        )
+        
+        # Update stats
+        await self.stats_collection.update_one(
+            {"_id": "global"},
+            {"$inc": {"total_tokens": 1}},
+            upsert=True
+        )
+        
+        success_text = f"""
+✅ **Token {token_num} Verified Successfully!**
+
+**Bot:** {token_data['bot_name']}
+**Progress:** {verified_count}/4 tokens verified
+
+{f"🎉 **All tokens verified!** You now have access to all 4 bots for 24 hours!" if verified_count == 4 else f"Continue verifying remaining {4 - verified_count} tokens."}
+"""
+        
+        keyboard = InlineKeyboardMarkup([
+            [InlineKeyboardButton("🔙 Back to Tokens", callback_data="back_to_multi_tokens")],
+            [InlineKeyboardButton("📊 Check Status", callback_data="show_available_bots")],
+            [InlineKeyboardButton("✖ Close", callback_data="close_menu")]
+        ])
+        
+        await callback_query.message.edit_text(success_text, reply_markup=keyboard)
+    
+    async def show_payment_options(self, callback_query, plan_type: str):
+        """Show payment options for selected plan"""
+        user = callback_query.from_user
+        
+        try:
+            from payments import get_plan_details, get_payment_buttons
+            
+            plan_details = get_plan_details(plan_type)
+            if not plan_details:
+                await callback_query.answer("❌ Invalid plan selected.", show_alert=True)
+                return
+            
+            payment_text = f"""
+💎 **{plan_details['name']} - Premium Subscription**
+
+👤 **User:** {user.first_name}
+⏰ **Duration:** {plan_details['duration_days']} days
+💰 **Price:** ₹{plan_details['price_inr']} / ${plan_details['price_usd']}
+
+✨ **Features:**
+{chr(10).join(f"• {feature}" for feature in plan_details['features'])}
+
+💳 **Choose Payment Method:**
+"""
+            
+            # Get payment buttons
+            payment_buttons = get_payment_buttons(plan_type)
+            keyboard_rows = []
+            
+            for button in payment_buttons:
+                keyboard_rows.append([InlineKeyboardButton(button['text'], callback_data=button['callback_data'])])
+            
+            keyboard_rows.extend([
+                [InlineKeyboardButton("🔙 Back to Plans", callback_data="option_premium")],
+                [InlineKeyboardButton("✖ Close", callback_data="close_menu")]
+            ])
+            
+            keyboard = InlineKeyboardMarkup(keyboard_rows)
+            await callback_query.message.edit_text(payment_text, reply_markup=keyboard)
+            
+        except ImportError:
+            await callback_query.answer("❌ Payment system not configured.", show_alert=True)
+    
+    async def process_razorpay_payment(self, callback_query, plan_type: str):
+        """Process Razorpay payment"""
+        user = callback_query.from_user
+        
+        try:
+            from payments import create_payment, get_plan_details
+            
+            plan_details = get_plan_details(plan_type)
+            if not plan_details:
+                await callback_query.answer("❌ Invalid plan selected.", show_alert=True)
+                return
+            
+            # Create Razorpay payment order
+            payment_result = await create_payment("razorpay", user.id, plan_type)
+            
+            if payment_result:
+                # Store payment order in database
+                await self.user_collection.update_one(
+                    {"user_id": user.id},
+                    {"$set": {
+                        "pending_payment": {
+                            "provider": "razorpay",
+                            "plan_type": plan_type,
+                            "order_id": payment_result["order_id"],
+                            "amount": payment_result["amount"],
+                            "currency": payment_result["currency"],
+                            "created_at": datetime.now().isoformat()
+                        }
+                    }},
+                    upsert=True
+                )
+                
+                payment_text = f"""
+💳 **Razorpay Payment - {plan_details['name']}**
+
+**Order ID:** `{payment_result['order_id']}`
+**Amount:** ₹{plan_details['price_inr']}
+**Status:** Payment Created
+
+🔗 **Next Steps:**
+1. Click "Pay with Razorpay" button below
+2. Complete payment using UPI/Card/NetBanking
+3. Return to bot for token activation
+
+⚠️ **Note:** Payment order expires in 15 minutes
+"""
+                
+                # In a real implementation, you'd integrate with Razorpay checkout
+                # For now, show instructions
+                keyboard = InlineKeyboardMarkup([
+                    [InlineKeyboardButton("💳 Open Razorpay Checkout", url="https://razorpay.com")],
+                    [InlineKeyboardButton("✅ Payment Completed", callback_data=f"payment_completed_razorpay_{plan_type}")],
+                    [InlineKeyboardButton("🔙 Back", callback_data=f"buy_{plan_type}")],
+                    [InlineKeyboardButton("✖ Close", callback_data="close_menu")]
+                ])
+                
+                await callback_query.message.edit_text(payment_text, reply_markup=keyboard)
+            else:
+                await callback_query.answer("❌ Failed to create payment order. Please try again.", show_alert=True)
+                
+        except ImportError:
+            await callback_query.answer("❌ Razorpay not configured.", show_alert=True)
+        except Exception as e:
+            logger.error(f"Razorpay payment error: {e}")
+            await callback_query.answer("❌ Payment processing error.", show_alert=True)
+    
+    async def process_paypal_payment(self, callback_query, plan_type: str):
+        """Process PayPal payment"""
+        user = callback_query.from_user
+        
+        try:
+            from payments import create_payment, get_plan_details
+            
+            plan_details = get_plan_details(plan_type)
+            if not plan_details:
+                await callback_query.answer("❌ Invalid plan selected.", show_alert=True)
+                return
+            
+            # Create PayPal payment
+            payment_result = await create_payment("paypal", user.id, plan_type)
+            
+            if payment_result and payment_result.get("approval_url"):
+                # Store payment order in database
+                await self.user_collection.update_one(
+                    {"user_id": user.id},
+                    {"$set": {
+                        "pending_payment": {
+                            "provider": "paypal",
+                            "plan_type": plan_type,
+                            "payment_id": payment_result["payment_id"],
+                            "amount": payment_result["amount"],
+                            "currency": payment_result["currency"],
+                            "approval_url": payment_result["approval_url"],
+                            "created_at": datetime.now().isoformat()
+                        }
+                    }},
+                    upsert=True
+                )
+                
+                payment_text = f"""
+💰 **PayPal Payment - {plan_details['name']}**
+
+**Payment ID:** `{payment_result['payment_id']}`
+**Amount:** ${plan_details['price_usd']}
+**Status:** Awaiting Payment
+
+🔗 **Next Steps:**
+1. Click "Pay with PayPal" button below
+2. Login to PayPal and approve payment
+3. Return to bot for token activation
+
+⚠️ **Note:** Payment expires in 3 hours
+"""
+                
+                keyboard = InlineKeyboardMarkup([
+                    [InlineKeyboardButton("💰 Pay with PayPal", url=payment_result["approval_url"])],
+                    [InlineKeyboardButton("✅ Payment Completed", callback_data=f"payment_completed_paypal_{plan_type}")],
+                    [InlineKeyboardButton("🔙 Back", callback_data=f"buy_{plan_type}")],
+                    [InlineKeyboardButton("✖ Close", callback_data="close_menu")]
+                ])
+                
+                await callback_query.message.edit_text(payment_text, reply_markup=keyboard)
+            else:
+                await callback_query.answer("❌ Failed to create PayPal payment. Please try again.", show_alert=True)
+                
+        except ImportError:
+            await callback_query.answer("❌ PayPal not configured.", show_alert=True)
+        except Exception as e:
+            logger.error(f"PayPal payment error: {e}")
+            await callback_query.answer("❌ Payment processing error.", show_alert=True)
 
 async def main():
     """Main function"""
