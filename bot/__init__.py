@@ -504,6 +504,8 @@ if len(FSUB_IDS) == 0:
 BOT_PM = environ.get("BOT_PM", "")
 BOT_PM = BOT_PM.lower() == "true"
 
+AUTH_BOT_USERNAME = environ.get("AUTH_BOT_USERNAME", "SoulKaizer_bot")
+
 DAILY_TASK_LIMIT = environ.get("DAILY_TASK_LIMIT", "")
 DAILY_TASK_LIMIT = "" if len(DAILY_TASK_LIMIT) == 0 else int(DAILY_TASK_LIMIT)
 
@@ -676,6 +678,7 @@ config_dict = {
     "LINKS_LOG_ID": LINKS_LOG_ID,
     "EXCEP_CHATS": EXCEP_CHATS,
     "BOT_PM": BOT_PM,
+    "AUTH_BOT_USERNAME": AUTH_BOT_USERNAME,
     "DISABLE_DRIVE_LINK": DISABLE_DRIVE_LINK,
     "BOT_THEME": BOT_THEME,
     "IMAGES": IMAGES,

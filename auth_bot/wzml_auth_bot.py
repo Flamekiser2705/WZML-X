@@ -102,6 +102,47 @@ class WZMLAuthBot:
             """Handle /start command - Welcome with available commands"""
             user = message.from_user
             
+            # Check if this is a verification callback
+            if len(message.command) > 1:
+                command_args = message.command[1]
+                if command_args.startswith("verify_"):
+                    # Handle verification completion
+                    try:
+                        parts = command_args.split("_")
+                        if len(parts) >= 3:
+                            verification_token = parts[1]
+                            user_id = int(parts[2])
+                            
+                            if user.id == user_id:
+                                # Complete the verification
+                                success = self.shortener_manager.complete_verification(user.id, verification_token)
+                                if success:
+                                    await message.reply_text("""
+✅ **Verification Completed Successfully!**
+
+🎉 Your verification has been completed! You can now go back to the bot and click "✅ I've Completed Verification" to receive your access token.
+
+Thank you for completing the verification process!
+""")
+                                else:
+                                    await message.reply_text("""
+❌ **Verification Failed**
+
+This verification link is either:
+• Already used
+• Expired  
+• Invalid
+
+Please start a new verification process.
+""")
+                            else:
+                                await message.reply_text("❌ This verification link is not for your account.")
+                        else:
+                            await message.reply_text("❌ Invalid verification link format.")
+                    except Exception as e:
+                        await message.reply_text("❌ Error processing verification link.")
+                    return
+            
             # Track user
             if user.id not in self.user_tokens:
                 self.user_stats["total_users"] += 1
@@ -1544,24 +1585,71 @@ Select a shortener service to complete Token {token_num} verification:
         await callback_query.message.edit_text(selection_text, reply_markup=InlineKeyboardMarkup(keyboard))
 
     async def start(self):
-        """Start the bot"""
-        try:
-            logger.info("[START] Starting WZML-X Auth Bot...")
-            
-            await self.app.start()
-            
-            # Get bot info
-            me = await self.app.get_me()
-            logger.info(f"[SUCCESS] Bot started successfully: @{me.username}")
-            logger.info(f"[INFO] Bot ID: {me.id}")
-            logger.info(f"[INFO] Bot Name: {me.first_name}")
-            
-            # Wait for shutdown signal
-            await self.shutdown_event.wait()
-            
-        except Exception as e:
-            logger.error(f"[ERROR] Failed to start bot: {e}")
-            raise
+        """Start the bot with retry logic for time sync issues"""
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                logger.info(f"[START] Starting WZML-X Auth Bot... (Attempt {attempt + 1}/{max_retries})")
+                
+                # If this is a retry, clear the session and recreate client
+                if attempt > 0:
+                    logger.info("[RETRY] Clearing session and recreating client...")
+                    if self.app:
+                        try:
+                            await self.app.stop()
+                        except:
+                            pass
+                        # Wait for proper cleanup
+                        await asyncio.sleep(1)
+                    
+                    # Remove session file with retry logic for Windows file locking
+                    import os
+                    import time
+                    session_file = "sessions/wzml_auth_bot.session"
+                    for i in range(5):  # Try 5 times to delete session file
+                        try:
+                            if os.path.exists(session_file):
+                                os.remove(session_file)
+                                logger.info("[RETRY] Session file removed")
+                            break
+                        except OSError:
+                            if i < 4:  # Don't log on last attempt
+                                logger.warning(f"[RETRY] File in use, waiting... ({i+1}/5)")
+                                time.sleep(0.5)
+                    
+                    # Recreate client
+                    from utils.main_config import config
+                    self.app = Client(
+                        "wzml_auth_bot",
+                        bot_token=config.AUTH_BOT_TOKEN,
+                        api_id=config.TELEGRAM_API,
+                        api_hash=config.TELEGRAM_HASH,
+                        workdir="sessions"
+                    )
+                    self.setup_handlers()
+                    
+                    # Wait a bit before retry
+                    await asyncio.sleep(2)
+                
+                await self.app.start()
+                
+                # Get bot info
+                me = await self.app.get_me()
+                logger.info(f"[SUCCESS] Bot started successfully: @{me.username}")
+                logger.info(f"[INFO] Bot ID: {me.id}")
+                logger.info(f"[INFO] Bot Name: {me.first_name}")
+                
+                # Wait for shutdown signal
+                await self.shutdown_event.wait()
+                break
+                
+            except Exception as e:
+                if "msg_id is too low" in str(e) and attempt < max_retries - 1:
+                    logger.warning(f"[RETRY] Time sync error on attempt {attempt + 1}, retrying...")
+                    continue
+                else:
+                    logger.error(f"[ERROR] Failed to start bot: {e}")
+                    raise
     
     async def stop(self):
         """Stop the bot"""

@@ -56,6 +56,7 @@ from .helper.telegram_helper.message_utils import (
 )
 from .helper.telegram_helper.filters import CustomFilters
 from .helper.telegram_helper.button_build import ButtonMaker
+from .helper.telegram_helper.unauthorized_message import generate_unauthorized_message
 from .helper.listeners.aria2_listener import start_aria2_listener
 from .helper.themes import BotTheme
 from .modules import (
@@ -130,7 +131,9 @@ async def start(client, message):
     elif config_dict["BOT_PM"]:
         await sendMessage(message, BotTheme("ST_BOTPM"), reply_markup, photo="IMAGES")
     else:
-        await sendMessage(message, BotTheme("ST_UNAUTH"), reply_markup, photo="IMAGES")
+        # Use new unauthorized message format
+        message_text, auth_reply_markup = generate_unauthorized_message(message.from_user)
+        await sendMessage(message, message_text, auth_reply_markup, photo="IMAGES")
     await DbManger().update_pm_users(message.from_user.id)
 
 

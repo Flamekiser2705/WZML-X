@@ -1,1 +1,3 @@
-python3 update.py && python3 -m bot
+#!/bin/bash
+echo "Starting bot..."
+python3 -m bot

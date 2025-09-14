@@ -210,6 +210,12 @@ class BotManager:
         """Get only available (active) bots"""
         return {k: v for k, v in self.bots.items() if v.status == "active"}
     
+    def is_bot_available(self, bot_key: str) -> bool:
+        """Check if a specific bot is available (active)"""
+        if bot_key not in self.bots:
+            return False
+        return self.bots[bot_key].status == "active"
+    
     def get_all_bots(self) -> Dict[str, BotConfig]:
         """Get all bots regardless of status"""
         return self.bots.copy()

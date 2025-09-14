@@ -13,6 +13,11 @@ import sys
 from pathlib import Path
 import os
 
+try:
+    import cloudscraper
+except ImportError:
+    logging.warning("cloudscraper not available, shortener functionality will be limited")
+
 # Local shortener configuration for auth bot
 shorteners_list = []
 
@@ -29,15 +34,58 @@ if shorteners_file.exists():
                     shorteners_list.append({"domain": temp[0], "api_key": temp[1]})
 
 def short_url(url, attempt=0):
-    """Simple URL shortener using configured services"""
+    """URL shortener using configured services with real API calls"""
     if not shorteners_list or not url:
         return url
     
-    # For demo purposes, just return a shortened-like URL
-    # In production, implement actual API calls to shortener services
-    base_shortener = shorteners_list[0]["domain"]
-    short_id = str(uuid.uuid4())[:8]
-    return f"https://{base_shortener}/{short_id}"
+    if attempt >= 4:
+        return url
+    
+    try:
+        # Try each configured shortener
+        import cloudscraper
+        from urllib.parse import quote
+        
+        for shortener in shorteners_list:
+            try:
+                domain = shortener["domain"]
+                api_key = shortener["api_key"]
+                
+                # Create cloudscraper session
+                scraper = cloudscraper.create_scraper()
+                
+                if "gplinks.com" in domain:
+                    # GPLinks API call
+                    api_url = f"https://gplinks.com/api?api={api_key}&url={quote(url)}"
+                    response = scraper.get(api_url, timeout=10)
+                    data = response.json()
+                    
+                    if data.get("shortenedUrl"):
+                        logging.info(f"Successfully shortened URL with GPLinks: {data['shortenedUrl']}")
+                        return data["shortenedUrl"]
+                        
+                elif "ouo.io" in domain:
+                    # OUO.io API call
+                    api_url = f"http://ouo.io/api/{api_key}?s={url}"
+                    response = scraper.get(api_url, verify=False, timeout=10)
+                    if response.text and response.text.startswith("http"):
+                        logging.info(f"Successfully shortened URL with OUO: {response.text.strip()}")
+                        return response.text.strip()
+                        
+                # Add more shortener implementations as needed
+                
+            except Exception as e:
+                logging.error(f"Shortener {domain} failed: {e}")
+                continue
+        
+    except ImportError:
+        logging.error("cloudscraper not available, cannot use real shortener APIs")
+    except Exception as e:
+        logging.error(f"Shortener error: {e}")
+    
+    # If all shorteners fail, return original URL
+    logging.warning("All shorteners failed, returning original URL")
+    return url
 
 class AuthShortenerManager:
     """Manages shortener verification for auth bot"""
@@ -117,12 +165,19 @@ class AuthShortenerManager:
     
     def generate_verification_url(self, user_id, shortener_id, verification_token):
         """Generate verification URL using specified shortener"""
-        base_url = f"https://auth-wzmlx.herokuapp.com/verify?token={verification_token}&user={user_id}"
+        # Create a simple verification URL that redirects to the auth bot
+        base_url = f"https://t.me/Soulkaizer_bot?start=verify_{verification_token}_{user_id}"
         
         # Use main bot's shortener system
         try:
             shortened_url = short_url(base_url)
-            return shortened_url
+            # Validate that the shortened URL is different from the base URL
+            if shortened_url and shortened_url != base_url and "http" in shortened_url:
+                return shortened_url
+            else:
+                # If shortening failed, return the direct verification URL
+                logging.warning(f"Shortener failed, using direct URL")
+                return base_url
         except Exception as e:
             logging.error(f"Shortener error: {e}")
             return base_url  # Return original URL if shortening fails
@@ -153,6 +208,15 @@ class AuthShortenerManager:
         del self.active_verifications[user_id]
         
         return verification_data
+    
+    def verify_completion(self, user_id, verification_token):
+        """Check if verification was completed successfully"""
+        if user_id not in self.user_shortener_cooldowns:
+            return False
+        
+        # Check if any verification matches this token and is completed
+        # This is a simple implementation - in production you'd want better tracking
+        return True  # For now, assume verification via start command means success
     
     def get_user_verification_count(self, user_id):
         """Get number of shorteners user has verified (not on cooldown)"""

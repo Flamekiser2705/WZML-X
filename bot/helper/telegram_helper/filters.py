@@ -2,8 +2,9 @@
 from pyrogram.filters import create
 from pyrogram.enums import ChatType
 
-from bot import user_data, OWNER_ID
+from bot import user_data, OWNER_ID, config_dict
 from bot.helper.telegram_helper.message_utils import chat_info
+from bot.helper.telegram_helper.unauthorized_message import send_unauthorized_message
 
 
 class CustomFilters:
@@ -107,3 +108,19 @@ class CustomFilters:
         )
 
     blacklisted = create(blacklist_user)
+
+    async def handle_unauthorized_user(self, message):
+        """Handle unauthorized user with redirect message"""
+        await send_unauthorized_message(message)
+        return False
+    
+    async def check_authorized_and_handle(self, client, message):
+        """
+        Check if user is authorized and handle unauthorized users with redirect message
+        Returns True if authorized, False if unauthorized (and sends message)
+        """
+        if await self.authorized_user(client, message):
+            return True
+        else:
+            await send_unauthorized_message(message)
+            return False
