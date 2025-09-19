@@ -48,26 +48,67 @@ class AuthBotHandler:
             logger.error(f"[AUTH] Database connection failed: {e}")
             self._initialized = False
     
-    async def validate_token(self, user_id: int, token: str) -> Dict[str, Any]:
+    async def _get_current_bot_key(self) -> str:
         """
-        Validate user token with auth bot database
+        Get the bot_key for the current bot by matching bot token/ID
+        """
+        try:
+            from bot import LOGGER, bot
+            
+            # Get current bot info
+            bot_token = bot.token
+            current_bot_id = bot_token.split(':')[0] if ':' in bot_token else None
+            
+            if not current_bot_id:
+                logger.error("[AUTH] Cannot determine current bot ID")
+                return "bot1"  # Default fallback
+            
+            # Read auth bot's bot_configs.json to find matching bot_key
+            import json
+            from pathlib import Path
+            
+            auth_bot_config_path = Path(__file__).parent.parent.parent.parent / "auth_bot" / "bot_configs.json"
+            
+            if auth_bot_config_path.exists():
+                with open(auth_bot_config_path, 'r') as f:
+                    bot_configs = json.load(f)
+                
+                # Find bot_key that matches current bot_id
+                for bot_key, bot_config in bot_configs.items():
+                    if bot_config.get("bot_id") == current_bot_id:
+                        logger.info(f"[AUTH] Found bot_key '{bot_key}' for bot_id '{current_bot_id}'")
+                        return bot_key
+            
+            logger.warning(f"[AUTH] Bot_key not found for bot_id '{current_bot_id}', using 'bot1'")
+            return "bot1"  # Default fallback
+            
+        except Exception as e:
+            logger.error(f"[AUTH] Error determining bot_key: {e}")
+            return "bot1"  # Default fallback
+    
+    async def validate_token(self, user_id: int) -> Dict[str, Any]:
+        """
+        Validate user token directly from auth bot database
         
         Args:
             user_id: Telegram user ID
-            token: Token to validate
             
         Returns:
-            dict: Validation result
+            dict: Validation result with is_valid, message, and token info
         """
         try:
             await self._init_database()
             if not self._initialized:
-                return {"is_valid": False, "message": "Database not available"}
+                return {"is_valid": False, "message": "Database not initialized"}
             
-            # Find token in database
+            # Get the correct bot_key for this bot
+            bot_key = await self._get_current_bot_key()
+            logger.info(f"[AUTH] Checking token for user {user_id} with bot_key '{bot_key}'")
+            
+            # Query the tokens collection for valid token
             token_doc = await self.tokens_collection.find_one({
                 "user_id": user_id,
-                "token": token,
+                "bot_key": bot_key,
                 "verified": True
             })
             

@@ -1474,7 +1474,7 @@ You are Verified with **{verified_count} token**.
         
         expires_at = datetime.now(timezone.utc) + duration
         
-        # Store token
+        # Store token in memory
         self.user_tokens[user.id]["tokens"][bot_key] = {
             "token": access_token,
             "expires_at": expires_at,
@@ -1484,6 +1484,34 @@ You are Verified with **{verified_count} token**.
         # Add to verified bots
         if bot_key not in self.user_tokens[user.id]["verified_bots"]:
             self.user_tokens[user.id]["verified_bots"].append(bot_key)
+        
+        # **FIX: Save token to database** 
+        try:
+            await self.tokens_collection.update_one(
+                {"user_id": user.id, "bot_key": bot_key},
+                {
+                    "$set": {
+                        "token": access_token,
+                        "expires_at": expires_at.isoformat(),
+                        "type": token_type,
+                        "verified": True,
+                        "created_at": datetime.now().isoformat(),
+                        "updated_at": datetime.now().isoformat()
+                    }
+                },
+                upsert=True
+            )
+            logger.info(f"[DATABASE] Single token saved for user {user.id}, bot {bot_key}")
+            
+            # Update stats
+            await self.stats_collection.update_one(
+                {"_id": "global"},
+                {"$inc": {"total_tokens": 1}},
+                upsert=True
+            )
+        except Exception as e:
+            logger.error(f"[DATABASE] Error saving single token: {e}")
+            # Continue anyway - token is stored in memory
         
         # Clean up verification session
         self.shortener_manager.cleanup_verification_session(user.id)
