@@ -105,39 +105,27 @@ class AuthBotHandler:
             bot_key = await self._get_current_bot_key()
             logger.info(f"[AUTH] Checking token for user {user_id} with bot_key '{bot_key}'")
             
-            # Query the tokens collection for valid token
+            # Query the tokens collection for valid AND VERIFIED token
             token_doc = await self.tokens_collection.find_one({
                 "user_id": user_id,
                 "bot_key": bot_key,
-                "verified": True
+                "verified": True,
+                "is_active": True,
+                "expires_at": {"$gt": datetime.now(timezone.utc).isoformat()}
             })
             
             if not token_doc:
-                logger.debug(f"[AUTH] Token not found for user {user_id}")
+                logger.debug(f"[AUTH] No valid verified token found for user {user_id}, bot_key {bot_key}")
                 return {"is_valid": False, "message": "Invalid token"}
-            
-            # Check if token is expired
-            expires_at = token_doc.get("expires_at")
-            if expires_at:
-                # Parse ISO datetime string
-                if isinstance(expires_at, str):
-                    try:
-                        expires_dt = datetime.fromisoformat(expires_at.replace('Z', '+00:00'))
-                    except:
-                        expires_dt = datetime.fromisoformat(expires_at)
-                else:
-                    expires_dt = expires_at
-                    
-                if expires_dt < datetime.now(timezone.utc):
-                    logger.debug(f"[AUTH] Token expired for user {user_id}")
-                    return {"is_valid": False, "message": "Token expired"}
             
             logger.info(f"[AUTH] Valid token found for user {user_id}")
             return {
                 "is_valid": True, 
                 "message": "Token valid",
                 "bot_key": token_doc.get("bot_key"),
-                "type": token_doc.get("type")
+                "type": token_doc.get("type"),
+                "token": token_doc.get("token"),
+                "expires_at": token_doc.get("expires_at")
             }
                     
         except Exception as e:

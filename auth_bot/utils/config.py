@@ -16,11 +16,11 @@ class Config(BaseSettings):
     """Configuration class for Auth Bot"""
     
     # Bot Configuration
-    AUTH_BOT_TOKEN: str = ""
+    AUTH_BOT_TOKEN: str = os.getenv("AUTH_BOT_TOKEN", "")
     BOT_USERNAME: str = ""
     
     # Database
-    MONGODB_URI: str = "mongodb://localhost:27017/auth_bot"
+    MONGODB_URI: str = os.getenv("DATABASE_URL", "mongodb://localhost:27017/auth_bot")
     
     # Payment Gateways
     RAZORPAY_KEY_ID: str = ""
@@ -54,7 +54,11 @@ class Config(BaseSettings):
     ADMIN_IDS: str = ""
     
     # Registered Telegram Bots (bot_id:bot_name:bot_username)
-    REGISTERED_BOTS: str = ""
+    REGISTERED_BOTS: str = os.getenv("REGISTERED_BOTS", "")
+    
+    # Telegram API credentials
+    TELEGRAM_API: int = int(os.getenv("TELEGRAM_API", "0"))
+    TELEGRAM_HASH: str = os.getenv("TELEGRAM_HASH", "")
     
     class Config:
         env_file = ".env"
