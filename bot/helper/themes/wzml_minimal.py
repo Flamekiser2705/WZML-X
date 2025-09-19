@@ -9,10 +9,16 @@ class WZMLStyle:
     ST_MSG = """<i>This bot can mirror all your links|files|torrents to Google Drive or any rclone cloud or to telegram or to ddl servers.</i>
 <b>Type {help_command} to get a list of available commands</b>"""
     ST_BOTPM = """<i>Now, This bot will send all your files and links here. Start Using ...</i>"""
-    ST_UNAUTH = """Hey, {user_mention},
+    ST_UNAUTH = """❌ **Unauthorized Access**
 
-1: Please verify your account to start using this bot.
-2: You need to Start @{auth_bot_username} in DM."""
+Hey {user_mention},
+
+This command requires authorization. Please contact an admin or use our auth bot to gain access.
+
+🔗 **Auth Bot**: @{auth_bot_username}
+💡 **How to get access**: Send /start to the auth bot in DM
+
+Need help? Contact an admin."""
     OWN_TOKEN_GENERATE = (
         """<b>Temporary Token is not yours!</b>\n\n<i>Kindly generate your own.</i>"""
     )

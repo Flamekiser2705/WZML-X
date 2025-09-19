@@ -1104,3 +1104,554 @@ Traceback (most recent call last):
     self.shortener_manager.cleanup_verification_session(user.id)
     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 AttributeError: 'AuthShortenerManager' object has no attribute 'cleanup_verification_session'. Did you mean: 'start_verification_session'?
+2025-09-19 17:03:14,465 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-19 17:03:14,466 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-19 17:03:14,467 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-19 17:03:16,833 - __main__ - INFO - [SUCCESS] MongoDB connection established
+2025-09-19 17:03:17,633 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-19 17:03:17,633 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 1/3)
+2025-09-19 17:03:18,532 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 17:03:18,629 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 17:03:18,630 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 17:03:18,865 - pyrogram.session.internals.msg_id - INFO - Time synced: 2025-09-19 11:33:20.900661 UTC
+2025-09-19 17:03:18,866 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 17:03:18,866 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-19 17:03:18,866 - pyrogram.session.session - INFO - Session stopped
+2025-09-19 17:03:18,867 - __main__ - WARNING - [RETRY] Time sync error on attempt 1, retrying...
+2025-09-19 17:03:18,867 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 2/3)
+2025-09-19 17:03:18,867 - __main__ - INFO - [RETRY] Clearing session and recreating client...
+2025-09-19 17:03:19,881 - __main__ - WARNING - [RETRY] File in use, waiting... (1/5)
+2025-09-19 17:03:20,382 - __main__ - WARNING - [RETRY] File in use, waiting... (2/5)
+2025-09-19 17:03:20,883 - __main__ - WARNING - [RETRY] File in use, waiting... (3/5)
+2025-09-19 17:03:21,385 - __main__ - WARNING - [RETRY] File in use, waiting... (4/5)
+2025-09-19 17:03:23,934 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 17:03:24,030 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 17:03:24,030 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 17:03:24,483 - pyrogram.session.session - INFO - Session initialized: Layer 150
+2025-09-19 17:03:24,483 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.77
+2025-09-19 17:03:24,483 - pyrogram.session.session - INFO - System: Windows 11 (EN)
+2025-09-19 17:03:24,483 - pyrogram.session.session - INFO - Session started
+2025-09-19 17:03:24,486 - pyrogram.session.session - INFO - PingTask started
+2025-09-19 17:03:24,712 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-19 17:03:24,834 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-19 17:03:24,834 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-19 17:03:24,835 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-19 17:08:20,864 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-19 17:08:20,869 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-19 17:08:20,910 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-19 17:08:20,913 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-19 17:08:20,913 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 17:08:20,914 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-19 17:08:20,914 - pyrogram.session.session - INFO - Session stopped
+2025-09-19 17:08:20,916 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-19 17:23:34,693 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-19 17:23:34,693 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-19 17:23:34,694 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-19 17:23:35,698 - __main__ - INFO - [SUCCESS] MongoDB connection established
+2025-09-19 17:23:36,547 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-19 17:23:36,547 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 1/3)
+2025-09-19 17:23:37,302 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 17:23:37,534 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 17:23:37,535 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 17:23:38,038 - pyrogram.session.internals.msg_id - INFO - Time synced: 2025-09-19 11:53:39.908273 UTC
+2025-09-19 17:23:38,038 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 17:23:38,038 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-19 17:23:38,039 - pyrogram.session.session - INFO - Session stopped
+2025-09-19 17:23:38,039 - __main__ - WARNING - [RETRY] Time sync error on attempt 1, retrying...
+2025-09-19 17:23:38,039 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 2/3)
+2025-09-19 17:23:38,039 - __main__ - INFO - [RETRY] Clearing session and recreating client...
+2025-09-19 17:23:39,049 - __main__ - WARNING - [RETRY] File in use, waiting... (1/5)
+2025-09-19 17:23:39,550 - __main__ - WARNING - [RETRY] File in use, waiting... (2/5)
+2025-09-19 17:23:40,051 - __main__ - WARNING - [RETRY] File in use, waiting... (3/5)
+2025-09-19 17:23:40,552 - __main__ - WARNING - [RETRY] File in use, waiting... (4/5)
+2025-09-19 17:23:43,094 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 17:23:43,191 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 17:23:43,192 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 17:23:43,639 - pyrogram.session.session - INFO - Session initialized: Layer 150
+2025-09-19 17:23:43,639 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.77
+2025-09-19 17:23:43,639 - pyrogram.session.session - INFO - System: Windows 11 (EN)
+2025-09-19 17:23:43,639 - pyrogram.session.session - INFO - Session started
+2025-09-19 17:23:43,642 - pyrogram.session.session - INFO - PingTask started
+2025-09-19 17:23:43,900 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-19 17:23:44,035 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-19 17:23:44,035 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-19 17:23:44,035 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-19 17:30:31,769 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-19 17:30:31,769 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-19 17:30:31,771 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-19 17:30:32,664 - __main__ - INFO - [SUCCESS] MongoDB connection established
+2025-09-19 17:30:33,456 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-19 17:30:33,456 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 1/3)
+2025-09-19 17:30:34,157 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 17:30:34,388 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 17:30:34,389 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 17:30:34,894 - pyrogram.session.internals.msg_id - INFO - Time synced: 2025-09-19 12:00:36.754895 UTC
+2025-09-19 17:30:34,894 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 17:30:34,894 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-19 17:30:34,895 - pyrogram.session.session - INFO - Session stopped
+2025-09-19 17:30:34,895 - __main__ - WARNING - [RETRY] Time sync error on attempt 1, retrying...
+2025-09-19 17:30:34,895 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 2/3)
+2025-09-19 17:30:34,895 - __main__ - INFO - [RETRY] Clearing session and recreating client...
+2025-09-19 17:30:35,901 - __main__ - WARNING - [RETRY] File in use, waiting... (1/5)
+2025-09-19 17:30:36,402 - __main__ - WARNING - [RETRY] File in use, waiting... (2/5)
+2025-09-19 17:30:36,903 - __main__ - WARNING - [RETRY] File in use, waiting... (3/5)
+2025-09-19 17:30:37,404 - __main__ - WARNING - [RETRY] File in use, waiting... (4/5)
+2025-09-19 17:30:39,931 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 17:30:40,173 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 17:30:40,175 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 17:30:41,203 - pyrogram.session.session - INFO - Session initialized: Layer 150
+2025-09-19 17:30:41,204 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.77
+2025-09-19 17:30:41,204 - pyrogram.session.session - INFO - System: Windows 11 (EN)
+2025-09-19 17:30:41,204 - pyrogram.session.session - INFO - Session started
+2025-09-19 17:30:41,207 - pyrogram.session.session - INFO - PingTask started
+2025-09-19 17:30:41,724 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-19 17:30:41,980 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-19 17:30:41,981 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-19 17:30:41,981 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-19 17:38:24,609 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-19 17:38:24,610 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-19 17:38:24,627 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-19 17:38:24,628 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-19 17:38:24,628 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 17:38:24,629 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-19 17:38:24,629 - pyrogram.session.session - INFO - Session stopped
+2025-09-19 17:38:24,629 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-19 17:39:36,704 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-19 17:39:36,704 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-19 17:39:36,705 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-19 17:39:38,577 - __main__ - INFO - [SUCCESS] MongoDB connection established
+2025-09-19 17:39:39,374 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-19 17:39:39,374 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 1/3)
+2025-09-19 17:39:40,095 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 17:39:40,327 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 17:39:40,328 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 17:39:40,832 - pyrogram.session.internals.msg_id - INFO - Time synced: 2025-09-19 12:09:42.679741 UTC
+2025-09-19 17:39:40,833 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 17:39:40,833 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-19 17:39:40,834 - pyrogram.session.session - INFO - Session stopped
+2025-09-19 17:39:40,834 - __main__ - WARNING - [RETRY] Time sync error on attempt 1, retrying...
+2025-09-19 17:39:40,834 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 2/3)
+2025-09-19 17:39:40,835 - __main__ - INFO - [RETRY] Clearing session and recreating client...
+2025-09-19 17:39:41,848 - __main__ - WARNING - [RETRY] File in use, waiting... (1/5)
+2025-09-19 17:39:42,349 - __main__ - WARNING - [RETRY] File in use, waiting... (2/5)
+2025-09-19 17:39:42,850 - __main__ - WARNING - [RETRY] File in use, waiting... (3/5)
+2025-09-19 17:39:43,351 - __main__ - WARNING - [RETRY] File in use, waiting... (4/5)
+2025-09-19 17:39:45,884 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 17:39:45,977 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 17:39:45,977 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 17:39:46,401 - pyrogram.session.session - INFO - Session initialized: Layer 150
+2025-09-19 17:39:46,402 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.77
+2025-09-19 17:39:46,402 - pyrogram.session.session - INFO - System: Windows 11 (EN)
+2025-09-19 17:39:46,402 - pyrogram.session.session - INFO - Session started
+2025-09-19 17:39:46,405 - pyrogram.session.session - INFO - PingTask started
+2025-09-19 17:39:46,628 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-19 17:39:46,756 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-19 17:39:46,757 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-19 17:39:46,757 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-19 17:46:12,212 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-19 17:46:12,212 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-19 17:46:12,214 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-19 17:46:13,078 - __main__ - INFO - [SUCCESS] MongoDB connection established
+2025-09-19 17:46:13,868 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-19 17:46:13,868 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 1/3)
+2025-09-19 17:46:14,644 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 17:46:14,879 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 17:46:14,880 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 17:46:15,395 - pyrogram.session.internals.msg_id - INFO - Time synced: 2025-09-19 12:16:17.230423 UTC
+2025-09-19 17:46:15,395 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 17:46:15,396 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-19 17:46:15,396 - pyrogram.session.session - INFO - Session stopped
+2025-09-19 17:46:15,396 - __main__ - WARNING - [RETRY] Time sync error on attempt 1, retrying...
+2025-09-19 17:46:15,396 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 2/3)
+2025-09-19 17:46:15,397 - __main__ - INFO - [RETRY] Clearing session and recreating client...
+2025-09-19 17:46:16,408 - __main__ - WARNING - [RETRY] File in use, waiting... (1/5)
+2025-09-19 17:46:16,909 - __main__ - WARNING - [RETRY] File in use, waiting... (2/5)
+2025-09-19 17:46:17,410 - __main__ - WARNING - [RETRY] File in use, waiting... (3/5)
+2025-09-19 17:46:17,910 - __main__ - WARNING - [RETRY] File in use, waiting... (4/5)
+2025-09-19 17:46:20,455 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 17:46:20,551 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 17:46:20,552 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 17:46:21,005 - pyrogram.session.session - INFO - Session initialized: Layer 150
+2025-09-19 17:46:21,006 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.77
+2025-09-19 17:46:21,006 - pyrogram.session.session - INFO - System: Windows 11 (EN)
+2025-09-19 17:46:21,006 - pyrogram.session.session - INFO - Session started
+2025-09-19 17:46:21,013 - pyrogram.session.session - INFO - PingTask started
+2025-09-19 17:46:21,239 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-19 17:46:21,363 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-19 17:46:21,364 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-19 17:46:21,364 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-19 17:47:37,014 - pyrogram.dispatcher - ERROR - 'WZMLAuthBot' object has no attribute 'user_stats'
+Traceback (most recent call last):
+  File "C:\Users\akash\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 305, in stats_handler
+    👥 **Total Users:** {self.user_stats['total_users']}
+                         ^^^^^^^^^^^^^^^
+AttributeError: 'WZMLAuthBot' object has no attribute 'user_stats'
+2025-09-19 17:51:57,403 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-19 17:51:57,403 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-19 17:51:57,410 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-19 17:51:57,410 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-19 17:51:57,411 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 17:51:57,411 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-19 17:51:57,411 - pyrogram.session.session - INFO - Session stopped
+2025-09-19 17:51:57,412 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-19 17:52:33,397 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-19 17:52:33,397 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-19 17:52:33,399 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-19 17:52:34,345 - __main__ - INFO - [SUCCESS] MongoDB connection established
+2025-09-19 17:52:35,144 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-19 17:52:35,145 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 1/3)
+2025-09-19 17:52:35,864 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 17:52:36,105 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 17:52:36,106 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 17:52:36,636 - pyrogram.session.internals.msg_id - INFO - Time synced: 2025-09-19 12:22:38.454457 UTC
+2025-09-19 17:52:36,636 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 17:52:36,636 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-19 17:52:36,636 - pyrogram.session.session - INFO - Session stopped
+2025-09-19 17:52:36,637 - __main__ - WARNING - [RETRY] Time sync error on attempt 1, retrying...
+2025-09-19 17:52:36,637 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 2/3)
+2025-09-19 17:52:36,637 - __main__ - INFO - [RETRY] Clearing session and recreating client...
+2025-09-19 17:52:37,647 - __main__ - WARNING - [RETRY] File in use, waiting... (1/5)
+2025-09-19 17:52:38,148 - __main__ - WARNING - [RETRY] File in use, waiting... (2/5)
+2025-09-19 17:52:38,648 - __main__ - WARNING - [RETRY] File in use, waiting... (3/5)
+2025-09-19 17:52:39,149 - __main__ - WARNING - [RETRY] File in use, waiting... (4/5)
+2025-09-19 17:52:41,679 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 17:52:41,913 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 17:52:41,913 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 17:52:42,923 - pyrogram.session.session - INFO - Session initialized: Layer 150
+2025-09-19 17:52:42,923 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.77
+2025-09-19 17:52:42,923 - pyrogram.session.session - INFO - System: Windows 11 (EN)
+2025-09-19 17:52:42,924 - pyrogram.session.session - INFO - Session started
+2025-09-19 17:52:42,927 - pyrogram.session.session - INFO - PingTask started
+2025-09-19 17:52:43,552 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-19 17:52:43,837 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-19 17:52:43,838 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-19 17:52:43,838 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-19 17:53:52,163 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-19 17:53:52,163 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-19 17:53:52,172 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-19 17:53:52,173 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-19 17:53:52,173 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 17:53:52,173 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-19 17:53:52,173 - pyrogram.session.session - INFO - Session stopped
+2025-09-19 17:53:52,174 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-19 18:19:47,509 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-19 18:19:47,510 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-19 18:19:47,511 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-19 18:19:49,470 - __main__ - INFO - [SUCCESS] MongoDB connection established
+2025-09-19 18:19:50,269 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-19 18:19:50,269 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 1/3)
+2025-09-19 18:19:50,972 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 18:19:51,068 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 18:19:51,069 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 18:19:51,301 - pyrogram.session.internals.msg_id - INFO - Time synced: 2025-09-19 12:49:53.227444 UTC
+2025-09-19 18:19:51,301 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 18:19:51,302 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-19 18:19:51,302 - pyrogram.session.session - INFO - Session stopped
+2025-09-19 18:19:51,302 - __main__ - WARNING - [RETRY] Time sync error on attempt 1, retrying...
+2025-09-19 18:19:51,302 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 2/3)
+2025-09-19 18:19:51,302 - __main__ - INFO - [RETRY] Clearing session and recreating client...
+2025-09-19 18:19:52,304 - __main__ - WARNING - [RETRY] File in use, waiting... (1/5)
+2025-09-19 18:19:52,805 - __main__ - WARNING - [RETRY] File in use, waiting... (2/5)
+2025-09-19 18:19:53,306 - __main__ - WARNING - [RETRY] File in use, waiting... (3/5)
+2025-09-19 18:19:53,807 - __main__ - WARNING - [RETRY] File in use, waiting... (4/5)
+2025-09-19 18:19:56,346 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 18:19:56,479 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 18:19:56,480 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 18:19:57,296 - pyrogram.session.session - INFO - Session initialized: Layer 150
+2025-09-19 18:19:57,296 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.77
+2025-09-19 18:19:57,297 - pyrogram.session.session - INFO - System: Windows 11 (EN)
+2025-09-19 18:19:57,297 - pyrogram.session.session - INFO - Session started
+2025-09-19 18:19:57,299 - pyrogram.session.session - INFO - PingTask started
+2025-09-19 18:19:57,605 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-19 18:19:57,757 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-19 18:19:57,757 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-19 18:19:57,757 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-19 18:20:34,128 - pyrogram.dispatcher - ERROR - 'WZMLAuthBot' object has no attribute 'user_tokens'
+Traceback (most recent call last):
+  File "C:\Users\akash\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 184, in start_handler
+    if user.id not in self.user_tokens:
+                      ^^^^^^^^^^^^^^^^
+AttributeError: 'WZMLAuthBot' object has no attribute 'user_tokens'
+2025-09-19 18:21:22,890 - pyrogram.dispatcher - ERROR - 'WZMLAuthBot' object has no attribute 'user_tokens'
+Traceback (most recent call last):
+  File "C:\Users\akash\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 435, in callback_handler
+    await self.generate_multi_tokens(callback_query)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 985, in generate_multi_tokens
+    if user.id in self.user_tokens:
+                  ^^^^^^^^^^^^^^^^
+AttributeError: 'WZMLAuthBot' object has no attribute 'user_tokens'
+2025-09-19 18:21:26,524 - pyrogram.dispatcher - ERROR - 'WZMLAuthBot' object has no attribute 'user_tokens'
+Traceback (most recent call last):
+  File "C:\Users\akash\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 435, in callback_handler
+    await self.generate_multi_tokens(callback_query)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 985, in generate_multi_tokens
+    if user.id in self.user_tokens:
+                  ^^^^^^^^^^^^^^^^
+AttributeError: 'WZMLAuthBot' object has no attribute 'user_tokens'
+2025-09-19 18:21:29,195 - pyrogram.dispatcher - ERROR - 'WZMLAuthBot' object has no attribute 'user_tokens'
+Traceback (most recent call last):
+  File "C:\Users\akash\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 184, in start_handler
+    if user.id not in self.user_tokens:
+                      ^^^^^^^^^^^^^^^^
+AttributeError: 'WZMLAuthBot' object has no attribute 'user_tokens'
+2025-09-19 18:21:32,523 - pyrogram.dispatcher - ERROR - 'WZMLAuthBot' object has no attribute 'user_tokens'
+Traceback (most recent call last):
+  File "C:\Users\akash\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 435, in callback_handler
+    await self.generate_multi_tokens(callback_query)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 985, in generate_multi_tokens
+    if user.id in self.user_tokens:
+                  ^^^^^^^^^^^^^^^^
+AttributeError: 'WZMLAuthBot' object has no attribute 'user_tokens'
+2025-09-19 18:21:34,049 - pyrogram.dispatcher - ERROR - 'WZMLAuthBot' object has no attribute 'user_tokens'
+Traceback (most recent call last):
+  File "C:\Users\akash\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 435, in callback_handler
+    await self.generate_multi_tokens(callback_query)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 985, in generate_multi_tokens
+    if user.id in self.user_tokens:
+                  ^^^^^^^^^^^^^^^^
+AttributeError: 'WZMLAuthBot' object has no attribute 'user_tokens'
+2025-09-19 18:21:34,251 - pyrogram.dispatcher - ERROR - 'WZMLAuthBot' object has no attribute 'user_tokens'
+Traceback (most recent call last):
+  File "C:\Users\akash\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 435, in callback_handler
+    await self.generate_multi_tokens(callback_query)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 985, in generate_multi_tokens
+    if user.id in self.user_tokens:
+                  ^^^^^^^^^^^^^^^^
+AttributeError: 'WZMLAuthBot' object has no attribute 'user_tokens'
+2025-09-19 18:21:39,920 - pyrogram.dispatcher - ERROR - 'WZMLAuthBot' object has no attribute 'user_tokens'
+Traceback (most recent call last):
+  File "C:\Users\akash\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 435, in callback_handler
+    await self.generate_multi_tokens(callback_query)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 985, in generate_multi_tokens
+    if user.id in self.user_tokens:
+                  ^^^^^^^^^^^^^^^^
+AttributeError: 'WZMLAuthBot' object has no attribute 'user_tokens'
+2025-09-19 18:21:40,881 - pyrogram.dispatcher - ERROR - 'WZMLAuthBot' object has no attribute 'user_tokens'
+Traceback (most recent call last):
+  File "C:\Users\akash\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 435, in callback_handler
+    await self.generate_multi_tokens(callback_query)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 985, in generate_multi_tokens
+    if user.id in self.user_tokens:
+                  ^^^^^^^^^^^^^^^^
+AttributeError: 'WZMLAuthBot' object has no attribute 'user_tokens'
+2025-09-19 18:38:00,633 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-19 18:38:00,633 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-19 18:38:00,634 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-19 18:38:02,582 - __main__ - INFO - [SUCCESS] MongoDB connection established
+2025-09-19 18:38:02,583 - __main__ - ERROR - [ERROR] Configuration errors:
+2025-09-19 18:38:02,583 - __main__ - ERROR -   - No payment gateways configured. Set RAZORPAY_KEY_ID or PAYPAL_CLIENT_ID
+2025-09-19 18:38:02,583 - __main__ - ERROR - [ERROR] Failed to initialize bot
+2025-09-19 18:38:02,584 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-19 18:38:02,584 - __main__ - INFO - [CLEANUP] Starting cleanup process...
+2025-09-19 18:38:02,608 - __main__ - INFO - [CLEANUP] MongoDB connection closed
+2025-09-19 18:38:02,608 - __main__ - INFO - [CLEANUP] Cleanup completed
+2025-09-19 18:38:02,609 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-19 18:40:31,156 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-19 18:40:31,158 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-19 18:40:31,160 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-19 18:40:33,302 - __main__ - INFO - [SUCCESS] MongoDB connection established
+2025-09-19 18:40:33,303 - __main__ - WARNING - [WARNING] Configuration warnings:
+2025-09-19 18:40:33,303 - __main__ - WARNING -   - No payment gateways configured. Premium subscriptions will be unavailable.
+2025-09-19 18:40:34,083 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-19 18:40:34,084 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 1/3)
+2025-09-19 18:40:35,224 - __main__ - ERROR - [ERROR] Failed to start bot: database is locked
+2025-09-19 18:40:35,224 - __main__ - ERROR - [ERROR] Unexpected error: database is locked
+2025-09-19 18:40:35,224 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-19 18:40:35,224 - __main__ - INFO - [CLEANUP] Starting cleanup process...
+2025-09-19 18:40:35,251 - __main__ - INFO - [CLEANUP] MongoDB connection closed
+2025-09-19 18:40:35,251 - __main__ - WARNING - [CLEANUP] Error stopping Pyrogram client: Client is already terminated
+2025-09-19 18:40:35,251 - __main__ - INFO - [CLEANUP] Cleanup completed
+2025-09-19 18:40:35,251 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-19 18:42:58,240 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-19 18:42:58,241 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-19 18:42:58,242 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-19 18:42:59,358 - __main__ - INFO - [SUCCESS] MongoDB connection established
+2025-09-19 18:42:59,359 - __main__ - WARNING - [WARNING] Configuration warnings:
+2025-09-19 18:42:59,359 - __main__ - WARNING -   - No payment gateways configured. Premium subscriptions will be unavailable.
+2025-09-19 18:43:00,162 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-19 18:43:00,162 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 1/3)
+2025-09-19 18:43:01,026 - pyrogram.session.auth - INFO - Start creating a new auth key on DC2
+2025-09-19 18:43:01,026 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 18:43:01,282 - pyrogram.connection.connection - INFO - Connected! Production DC2 - IPv4 - TCPAbridgedO
+2025-09-19 18:43:03,153 - pyrogram.session.auth - INFO - Done auth key exchange: DhGenOk
+2025-09-19 18:43:03,153 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 18:43:03,169 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 18:43:03,425 - pyrogram.connection.connection - INFO - Connected! Production DC2 - IPv4 - TCPAbridgedO
+2025-09-19 18:43:03,426 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 18:43:03,978 - pyrogram.session.internals.msg_id - INFO - Time synced: 2025-09-19 13:13:03.829704 UTC
+2025-09-19 18:43:03,978 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 18:43:03,979 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-19 18:43:03,979 - pyrogram.session.session - INFO - Session stopped
+2025-09-19 18:43:03,979 - __main__ - WARNING - [RETRY] Time sync error on attempt 1, retrying...
+2025-09-19 18:43:03,980 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 2/3)
+2025-09-19 18:43:03,980 - __main__ - INFO - [RETRY] Clearing session and recreating client...
+2025-09-19 18:43:03,980 - __main__ - WARNING - [CLIENT] Error stopping app during retry: Client is already terminated
+2025-09-19 18:43:04,983 - __main__ - WARNING - [RETRY] File in use, waiting... (1/5)
+2025-09-19 18:43:05,484 - __main__ - WARNING - [RETRY] File in use, waiting... (2/5)
+2025-09-19 18:43:05,985 - __main__ - WARNING - [RETRY] File in use, waiting... (3/5)
+2025-09-19 18:43:06,486 - __main__ - WARNING - [RETRY] File in use, waiting... (4/5)
+2025-09-19 18:43:09,032 - pyrogram.session.auth - INFO - Start creating a new auth key on DC2
+2025-09-19 18:43:09,033 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 18:43:09,286 - pyrogram.connection.connection - INFO - Connected! Production DC2 - IPv4 - TCPAbridgedO
+2025-09-19 18:43:11,569 - pyrogram.session.auth - INFO - Done auth key exchange: DhGenOk
+2025-09-19 18:43:11,570 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 18:43:11,587 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 18:43:11,841 - pyrogram.connection.connection - INFO - Connected! Production DC2 - IPv4 - TCPAbridgedO
+2025-09-19 18:43:11,841 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 18:43:12,919 - pyrogram.session.session - INFO - Session initialized: Layer 150
+2025-09-19 18:43:12,919 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.77
+2025-09-19 18:43:12,919 - pyrogram.session.session - INFO - System: Windows 11 (EN)
+2025-09-19 18:43:12,919 - pyrogram.session.session - INFO - Session started
+2025-09-19 18:43:12,921 - pyrogram.session.session - INFO - PingTask started
+2025-09-19 18:43:13,197 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-19 18:43:13,197 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 18:43:13,198 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-19 18:43:13,198 - pyrogram.session.session - INFO - Session stopped
+2025-09-19 18:43:13,215 - pyrogram.session.auth - INFO - Start creating a new auth key on DC5
+2025-09-19 18:43:13,215 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 18:43:13,308 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 18:43:14,685 - pyrogram.session.auth - INFO - Done auth key exchange: DhGenOk
+2025-09-19 18:43:14,685 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 18:43:14,700 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 18:43:14,796 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 18:43:14,796 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 18:43:15,236 - pyrogram.session.session - INFO - Session initialized: Layer 150
+2025-09-19 18:43:15,236 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.77
+2025-09-19 18:43:15,236 - pyrogram.session.session - INFO - System: Windows 11 (EN)
+2025-09-19 18:43:15,236 - pyrogram.session.session - INFO - Session started
+2025-09-19 18:43:15,237 - pyrogram.session.session - INFO - PingTask started
+2025-09-19 18:43:15,602 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-19 18:43:15,718 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-19 18:43:15,718 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-19 18:43:15,718 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-19 18:44:44,116 - root - INFO - Successfully shortened URL with GPLinks: https://gplinks.co/l4IX5
+2025-09-19 18:54:36,443 - __main__ - INFO - [SIGNAL] Received signal 2
+2025-09-19 18:54:36,443 - __main__ - INFO - [STOP] Stopping WZML-X Auth Bot...
+2025-09-19 18:54:36,444 - __main__ - INFO - [CLEANUP] Starting cleanup process...
+2025-09-19 18:54:36,469 - __main__ - INFO - [CLEANUP] MongoDB connection closed
+2025-09-19 18:54:36,488 - pyrogram.dispatcher - INFO - Stopped 16 HandlerTasks
+2025-09-19 18:54:36,489 - pyrogram.session.session - INFO - PingTask stopped
+2025-09-19 18:54:36,489 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 18:54:36,489 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-19 18:54:36,490 - pyrogram.session.session - INFO - Session stopped
+2025-09-19 18:54:36,490 - __main__ - INFO - [CLEANUP] Pyrogram client stopped
+2025-09-19 18:54:36,490 - __main__ - INFO - [CLEANUP] Cleanup completed
+2025-09-19 18:54:36,490 - __main__ - INFO - [SUCCESS] Bot stopped successfully
+2025-09-19 18:55:30,993 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-19 18:55:30,993 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-19 18:55:30,995 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-19 18:55:33,064 - __main__ - INFO - [SUCCESS] MongoDB connection established
+2025-09-19 18:55:33,065 - __main__ - WARNING - [WARNING] Configuration warnings:
+2025-09-19 18:55:33,065 - __main__ - WARNING -   - No payment gateways configured. Premium subscriptions will be unavailable.
+2025-09-19 18:55:33,893 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-19 18:55:33,893 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 1/3)
+2025-09-19 18:55:34,745 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 18:55:34,840 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 18:55:34,841 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 18:55:35,075 - pyrogram.session.internals.msg_id - INFO - Time synced: 2025-09-19 13:25:34.977887 UTC
+2025-09-19 18:55:35,075 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 18:55:35,076 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-19 18:55:35,076 - pyrogram.session.session - INFO - Session stopped
+2025-09-19 18:55:35,076 - __main__ - WARNING - [RETRY] Time sync error on attempt 1, retrying...
+2025-09-19 18:55:35,077 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 2/3)
+2025-09-19 18:55:35,078 - __main__ - INFO - [RETRY] Clearing session and recreating client...
+2025-09-19 18:55:35,079 - __main__ - WARNING - [CLIENT] Error stopping app during retry: Client is already terminated
+2025-09-19 18:55:36,092 - __main__ - WARNING - [RETRY] File in use, waiting... (1/5)
+2025-09-19 18:55:36,593 - __main__ - WARNING - [RETRY] File in use, waiting... (2/5)
+2025-09-19 18:55:37,094 - __main__ - WARNING - [RETRY] File in use, waiting... (3/5)
+2025-09-19 18:55:37,594 - __main__ - WARNING - [RETRY] File in use, waiting... (4/5)
+2025-09-19 18:55:40,133 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 18:55:40,368 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 18:55:40,369 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 18:55:41,364 - pyrogram.session.session - INFO - Session initialized: Layer 150
+2025-09-19 18:55:41,364 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.77
+2025-09-19 18:55:41,364 - pyrogram.session.session - INFO - System: Windows 11 (EN)
+2025-09-19 18:55:41,364 - pyrogram.session.session - INFO - Session started
+2025-09-19 18:55:41,367 - pyrogram.session.session - INFO - PingTask started
+2025-09-19 18:55:41,895 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-19 18:55:42,148 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-19 18:55:42,148 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-19 18:55:42,148 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-19 19:10:16,344 - __main__ - INFO - [START] Starting WZML-X Auth Bot...
+2025-09-19 19:10:16,344 - __main__ - INFO - [INFO] Exact flow as per sample images
+2025-09-19 19:10:16,345 - __main__ - INFO - [INIT] Initializing WZML-X Auth Bot...
+2025-09-19 19:10:19,527 - __main__ - INFO - [SUCCESS] MongoDB connection established
+2025-09-19 19:10:19,528 - __main__ - WARNING - [WARNING] Configuration warnings:
+2025-09-19 19:10:19,529 - __main__ - WARNING -   - No payment gateways configured. Premium subscriptions will be unavailable.
+2025-09-19 19:10:20,323 - __main__ - INFO - [SUCCESS] WZML-X Auth Bot initialized successfully
+2025-09-19 19:10:20,323 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 1/3)
+2025-09-19 19:10:21,030 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 19:10:21,260 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 19:10:21,261 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 19:10:21,762 - pyrogram.session.internals.msg_id - INFO - Time synced: 2025-09-19 13:40:21.510285 UTC
+2025-09-19 19:10:21,762 - pyrogram.connection.connection - INFO - Disconnected
+2025-09-19 19:10:21,763 - pyrogram.session.session - INFO - NetworkTask stopped
+2025-09-19 19:10:21,763 - pyrogram.session.session - INFO - Session stopped
+2025-09-19 19:10:21,763 - __main__ - WARNING - [RETRY] Time sync error on attempt 1, retrying...
+2025-09-19 19:10:21,763 - __main__ - INFO - [START] Starting WZML-X Auth Bot... (Attempt 2/3)
+2025-09-19 19:10:21,763 - __main__ - INFO - [RETRY] Clearing session and recreating client...
+2025-09-19 19:10:21,764 - __main__ - WARNING - [CLIENT] Error stopping app during retry: Client is already terminated
+2025-09-19 19:10:22,772 - __main__ - WARNING - [RETRY] File in use, waiting... (1/5)
+2025-09-19 19:10:23,273 - __main__ - WARNING - [RETRY] File in use, waiting... (2/5)
+2025-09-19 19:10:23,773 - __main__ - WARNING - [RETRY] File in use, waiting... (3/5)
+2025-09-19 19:10:24,274 - __main__ - WARNING - [RETRY] File in use, waiting... (4/5)
+2025-09-19 19:10:26,797 - pyrogram.connection.connection - INFO - Connecting...
+2025-09-19 19:10:27,032 - pyrogram.connection.connection - INFO - Connected! Production DC5 - IPv4 - TCPAbridgedO
+2025-09-19 19:10:27,033 - pyrogram.session.session - INFO - NetworkTask started
+2025-09-19 19:10:28,029 - pyrogram.session.session - INFO - Session initialized: Layer 150
+2025-09-19 19:10:28,029 - pyrogram.session.session - INFO - Device: CPython 3.13.2 - Pyrogram 2.0.77
+2025-09-19 19:10:28,029 - pyrogram.session.session - INFO - System: Windows 11 (EN)
+2025-09-19 19:10:28,029 - pyrogram.session.session - INFO - Session started
+2025-09-19 19:10:28,032 - pyrogram.session.session - INFO - PingTask started
+2025-09-19 19:10:28,537 - pyrogram.dispatcher - INFO - Started 16 HandlerTasks
+2025-09-19 19:10:28,792 - __main__ - INFO - [SUCCESS] Bot started successfully: @Soulkaizer_bot
+2025-09-19 19:10:28,793 - __main__ - INFO - [INFO] Bot ID: 8367002066
+2025-09-19 19:10:28,793 - __main__ - INFO - [INFO] Bot Name: Mirror verify bot
+2025-09-19 19:11:31,431 - pyrogram.dispatcher - ERROR - 'WZMLAuthBot' object has no attribute 'user_tokens'
+Traceback (most recent call last):
+  File "C:\Users\akash\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 213, in start_handler
+    if user.id not in self.user_tokens:
+                      ^^^^^^^^^^^^^^^^
+AttributeError: 'WZMLAuthBot' object has no attribute 'user_tokens'
+2025-09-19 19:11:52,914 - pyrogram.dispatcher - ERROR - 'WZMLAuthBot' object has no attribute 'user_tokens'
+Traceback (most recent call last):
+  File "C:\Users\akash\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 213, in start_handler
+    if user.id not in self.user_tokens:
+                      ^^^^^^^^^^^^^^^^
+AttributeError: 'WZMLAuthBot' object has no attribute 'user_tokens'
+2025-09-19 19:12:05,062 - root - INFO - Successfully shortened URL with GPLinks: https://gplinks.co/ZwFchmmZ
+2025-09-19 19:15:48,715 - root - INFO - Successfully shortened URL with GPLinks: https://gplinks.co/3KJgT02Y
+2025-09-19 19:15:52,927 - pyrogram.dispatcher - ERROR - 'WZMLAuthBot' object has no attribute 'user_tokens'
+Traceback (most recent call last):
+  File "C:\Users\akash\AppData\Local\Programs\Python\Python313\Lib\site-packages\pyrogram\dispatcher.py", line 240, in handler_worker
+    await handler.callback(self.client, *args)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 674, in callback_handler
+    await self.handle_verification_completed(callback_query, verification_token)
+  File "Y:\MirrorLeechBotFiles\mirrorbot\auth_bot\wzml_auth_bot.py", line 1459, in handle_verification_completed
+    if user.id not in self.user_tokens:
+                      ^^^^^^^^^^^^^^^^
+AttributeError: 'WZMLAuthBot' object has no attribute 'user_tokens'

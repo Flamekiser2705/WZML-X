@@ -1,41 +1,56 @@
 #!/usr/bin/env python3
 """
 Auth Bot Integration Handler
-Handles communication between main bot and auth bot API
+Handles communication between main bot and auth bot via direct database access
 """
 
-import aiohttp
 import logging
 from typing import Optional, Dict, Any
 import os
-from datetime import datetime
+from datetime import datetime, timezone
+from motor.motor_asyncio import AsyncIOMotorClient
 
 logger = logging.getLogger(__name__)
 
 class AuthBotHandler:
-    """Handles integration with WZML-X Auth Bot API"""
+    """Handles integration with WZML-X Auth Bot via direct database access"""
     
     def __init__(self):
-        self.auth_api_url = os.getenv('AUTH_API_URL', 'http://localhost:8001')
-        self.auth_api_key = os.getenv('AUTH_API_KEY', 'wzmlx_auth_api_key_2024')
-        self.bot_id = os.getenv('BOT_ID', 'main_bot')
-        self.session = None
+        self.mongodb_uri = os.getenv('DATABASE_URL', '')
+        self.client = None
+        self.db = None
+        self.tokens_collection = None
+        self.user_collection = None
+        self._initialized = False
     
-    async def _get_session(self):
-        """Get or create aiohttp session"""
-        if not self.session:
-            self.session = aiohttp.ClientSession(
-                headers={
-                    'Authorization': f'Bearer {self.auth_api_key}',
-                    'Content-Type': 'application/json'
-                },
-                timeout=aiohttp.ClientTimeout(total=10)
-            )
-        return self.session
+    async def _init_database(self):
+        """Initialize database connection"""
+        if self._initialized:
+            return
+            
+        try:
+            if not self.mongodb_uri:
+                logger.error("[AUTH] DATABASE_URL not configured")
+                return
+                
+            # Connect to MongoDB (same database as auth bot)
+            self.client = AsyncIOMotorClient(self.mongodb_uri)
+            self.db = self.client.auth_bot  # Use auth_bot database
+            self.tokens_collection = self.db.tokens
+            self.user_collection = self.db.users
+            
+            # Test connection
+            await self.client.admin.command('ping')
+            logger.info("[AUTH] Connected to auth bot database")
+            self._initialized = True
+            
+        except Exception as e:
+            logger.error(f"[AUTH] Database connection failed: {e}")
+            self._initialized = False
     
     async def validate_token(self, user_id: int, token: str) -> Dict[str, Any]:
         """
-        Validate user token with auth bot API
+        Validate user token with auth bot database
         
         Args:
             user_id: Telegram user ID
@@ -45,36 +60,52 @@ class AuthBotHandler:
             dict: Validation result
         """
         try:
-            session = await self._get_session()
+            await self._init_database()
+            if not self._initialized:
+                return {"is_valid": False, "message": "Database not available"}
             
-            payload = {
+            # Find token in database
+            token_doc = await self.tokens_collection.find_one({
                 "user_id": user_id,
-                "bot_id": self.bot_id,
-                "token": token
-            }
+                "token": token,
+                "verified": True
+            })
             
-            async with session.post(
-                f"{self.auth_api_url}/validate-token",
-                json=payload
-            ) as response:
-                if response.status == 200:
-                    result = await response.json()
-                    logger.info(f"Token validation result for user {user_id}: {result.get('is_valid', False)}")
-                    return result
+            if not token_doc:
+                logger.debug(f"[AUTH] Token not found for user {user_id}")
+                return {"is_valid": False, "message": "Invalid token"}
+            
+            # Check if token is expired
+            expires_at = token_doc.get("expires_at")
+            if expires_at:
+                # Parse ISO datetime string
+                if isinstance(expires_at, str):
+                    try:
+                        expires_dt = datetime.fromisoformat(expires_at.replace('Z', '+00:00'))
+                    except:
+                        expires_dt = datetime.fromisoformat(expires_at)
                 else:
-                    logger.error(f"Token validation failed: HTTP {response.status}")
-                    return {"is_valid": False, "message": "API call failed"}
+                    expires_dt = expires_at
                     
-        except aiohttp.ClientError as e:
-            logger.error(f"Network error during token validation: {e}")
-            return {"is_valid": False, "message": "Network error"}
+                if expires_dt < datetime.now(timezone.utc):
+                    logger.debug(f"[AUTH] Token expired for user {user_id}")
+                    return {"is_valid": False, "message": "Token expired"}
+            
+            logger.info(f"[AUTH] Valid token found for user {user_id}")
+            return {
+                "is_valid": True, 
+                "message": "Token valid",
+                "bot_key": token_doc.get("bot_key"),
+                "type": token_doc.get("type")
+            }
+                    
         except Exception as e:
-            logger.error(f"Error validating token: {e}")
+            logger.error(f"[AUTH] Error validating token: {e}")
             return {"is_valid": False, "message": "Validation error"}
     
     async def get_user_info(self, user_id: int) -> Optional[Dict[str, Any]]:
         """
-        Get user information from auth bot
+        Get user information from auth bot database
         
         Args:
             user_id: Telegram user ID
@@ -83,27 +114,32 @@ class AuthBotHandler:
             dict: User information or None
         """
         try:
-            session = await self._get_session()
+            await self._init_database()
+            if not self._initialized:
+                return None
             
-            payload = {"user_id": user_id}
+            # Count active tokens for user
+            active_tokens = await self.tokens_collection.count_documents({
+                "user_id": user_id,
+                "verified": True,
+                "expires_at": {"$gt": datetime.now(timezone.utc).isoformat()}
+            })
             
-            async with session.post(
-                f"{self.auth_api_url}/user-info",
-                json=payload
-            ) as response:
-                if response.status == 200:
-                    user_info = await response.json()
-                    logger.info(f"Retrieved user info for {user_id}")
-                    return user_info
-                elif response.status == 404:
-                    logger.info(f"User {user_id} not found in auth system")
-                    return None
-                else:
-                    logger.error(f"Failed to get user info: HTTP {response.status}")
-                    return None
+            # Get user data if exists
+            user_data = await self.user_collection.find_one({"user_id": user_id})
+            
+            if active_tokens > 0 or user_data:
+                logger.info(f"[AUTH] User {user_id} has {active_tokens} active tokens")
+                return {
+                    "user_id": user_id,
+                    "active_tokens": active_tokens,
+                    "user_data": user_data
+                }
+            
+            return None
                     
         except Exception as e:
-            logger.error(f"Error getting user info: {e}")
+            logger.error(f"[AUTH] Error getting user info: {e}")
             return None
     
     async def is_user_authorized(self, user_id: int, token: str = None) -> bool:
@@ -146,22 +182,38 @@ class AuthBotHandler:
         Returns:
             str: Auth message
         """
-        auth_bot_username = os.getenv('AUTH_BOT_USERNAME', 'SoulKaizer_bot').replace('@', '')
+        # Try to get message from command management system first
+        try:
+            from bot.helper.ext_utils.command_manager import command_manager
+            config = command_manager.get_config()
+            if config and 'messages' in config and 'unauthorized' in config['messages']:
+                return config['messages']['unauthorized']
+        except:
+            pass
+        
+        # Fallback to environment-based message
+        auth_bot_username = os.getenv('AUTH_BOT_USERNAME', 'your_auth_bot').replace('@', '')
         
         user_mention = f"@{username}" if username else "User"
         
-        return f"""Hey, {user_mention},
+        return f"""❌ **Unauthorized Access**
 
-1: Please verify your account to start using this bot.
-2: You need to Start @{auth_bot_username} in DM to get access tokens.
+Hey {user_mention},
 
-🔗 Get your tokens: https://t.me/{auth_bot_username}"""
+This command requires authorization. Please contact an admin or use our auth bot to gain access.
+
+🔗 **Auth Bot**: @{auth_bot_username}
+💡 **How to get access**: Send /start to the auth bot in DM
+
+Need help? Contact an admin."""
     
     async def close(self):
-        """Close the session"""
-        if self.session:
-            await self.session.close()
-            self.session = None
+        """Close the database connection"""
+        if self.client:
+            self.client.close()
+            self.client = None
+            self._initialized = False
+            logger.info("[AUTH] Database connection closed")
 
 # Global instance
 auth_handler = AuthBotHandler()

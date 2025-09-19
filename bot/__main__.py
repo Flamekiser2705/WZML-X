@@ -2,6 +2,7 @@ from time import time, monotonic
 from datetime import datetime
 from sys import executable
 from os import execl as osexecl
+import os
 from asyncio import create_subprocess_exec, gather, run as asyrun
 from uuid import uuid4
 from base64 import b64decode
@@ -131,9 +132,9 @@ async def start(client, message):
     elif config_dict["BOT_PM"]:
         await sendMessage(message, BotTheme("ST_BOTPM"), reply_markup, photo="IMAGES")
     else:
-        # Use new unauthorized message format
-        message_text, auth_reply_markup = generate_unauthorized_message(message.from_user)
-        await sendMessage(message, message_text, auth_reply_markup, photo="IMAGES")
+        # Use centralized unauthorized message to prevent duplicates
+        from bot.helper.telegram_helper.unauthorized_message import send_unauthorized_message
+        await send_unauthorized_message(message)
     await DbManger().update_pm_users(message.from_user.id)
 
 

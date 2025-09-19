@@ -178,6 +178,7 @@ config = Config()
 def validate_config():
     """Validate configuration"""
     errors = []
+    warnings = []
     
     if not config.AUTH_BOT_TOKEN or config.AUTH_BOT_TOKEN == "YOUR_BOT_TOKEN_HERE":
         errors.append("AUTH_BOT_TOKEN is not set")
@@ -188,11 +189,37 @@ def validate_config():
     if not config.JWT_SECRET or config.JWT_SECRET == "your-secret-key-here":
         errors.append("JWT_SECRET is not set")
     
-    return errors
+    # Payment gateway validation (warnings only - not critical)
+    razorpay_configured = bool(config.RAZORPAY_KEY_ID and config.RAZORPAY_KEY_ID != "your_razorpay_key_id")
+    paypal_configured = bool(config.PAYPAL_CLIENT_ID and config.PAYPAL_CLIENT_ID != "your_paypal_client_id")
+    
+    if not razorpay_configured and not paypal_configured:
+        warnings.append("No payment gateways configured. Premium subscriptions will be unavailable.")
+    
+    if razorpay_configured and not config.RAZORPAY_KEY_SECRET:
+        errors.append("RAZORPAY_KEY_SECRET is required when RAZORPAY_KEY_ID is set")
+    
+    if paypal_configured and not config.PAYPAL_CLIENT_SECRET:
+        errors.append("PAYPAL_CLIENT_SECRET is required when PAYPAL_CLIENT_ID is set")
+    
+    return errors, warnings
+
+def get_payment_status():
+    """Get payment gateway configuration status"""
+    razorpay_configured = bool(config.RAZORPAY_KEY_ID and config.RAZORPAY_KEY_ID != "your_razorpay_key_id")
+    paypal_configured = bool(config.PAYPAL_CLIENT_ID and config.PAYPAL_CLIENT_ID != "your_paypal_client_id")
+    
+    return {
+        "razorpay": razorpay_configured,
+        "paypal": paypal_configured,
+        "any_configured": razorpay_configured or paypal_configured
+    }
 
 # Print config status
 def print_config_status():
     """Print configuration status"""
+    payment_status = get_payment_status()
+    
     print("[CONFIG] Auth Bot Configuration:")
     print(f"[CONFIG] Auth Bot Token: {'Set' if config.AUTH_BOT_TOKEN and config.AUTH_BOT_TOKEN != 'YOUR_BOT_TOKEN_HERE' else 'Not Set'}")
     print(f"[CONFIG] Bot Username: {config.BOT_USERNAME}")
@@ -203,10 +230,19 @@ def print_config_status():
     print(f"[CONFIG] Main Bot ID: {config.MAIN_BOT_ID}")
     print(f"[CONFIG] Telegram API: {'Set' if config.TELEGRAM_API else 'Not Set'}")
     print(f"[CONFIG] Telegram Hash: {'Set' if config.TELEGRAM_HASH else 'Not Set'}")
+    print(f"[CONFIG] Razorpay: {'Configured' if payment_status['razorpay'] else 'Not Configured'}")
+    print(f"[CONFIG] PayPal: {'Configured' if payment_status['paypal'] else 'Not Configured'}")
+    print(f"[CONFIG] Payment Systems: {'Available' if payment_status['any_configured'] else 'None Configured'}")
 
 if __name__ == "__main__":
     print_config_status()
-    errors = validate_config()
+    errors, warnings = validate_config()
+    
+    if warnings:
+        print("\n[WARNING] Configuration Warnings:")
+        for warning in warnings:
+            print(f"  - {warning}")
+    
     if errors:
         print("\n[ERROR] Configuration Errors:")
         for error in errors:

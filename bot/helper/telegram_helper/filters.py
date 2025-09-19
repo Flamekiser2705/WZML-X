@@ -21,7 +21,7 @@ class CustomFilters:
         user = message.from_user or message.sender_chat
         uid = user.id
         
-        # Check traditional authorization first (owner, sudo, etc)
+        # Check traditional authorization first (owner, sudo, auth users)
         if bool(
             uid == OWNER_ID
             or (
@@ -39,9 +39,9 @@ class CustomFilters:
             if await is_user_authorized(uid):
                 return True
         except Exception as e:
-            # Log error but don't break the filter
             print(f"Auth bot check failed: {e}")
 
+        # Check authorized chat
         auth_chat = False
         chat_id = message.chat.id
         if chat_id in user_data and user_data[chat_id].get("is_auth", False):
@@ -65,7 +65,24 @@ class CustomFilters:
                 )
             ):
                 auth_chat = True
-        return auth_chat
+        
+        if auth_chat:
+            return True
+        
+        # Extract command to check if it should be handled here
+        command_name = None
+        if message.text and message.text.startswith('/'):
+            command_name = message.text.split()[0][1:].split('@')[0]
+        
+        # Don't send unauthorized message for commands that handle their own authorization
+        # (like start, help, etc. that have custom logic)
+        skip_commands = {'start', 'help'}
+        if command_name and command_name.lower() in skip_commands:
+            return False  # Let the command handler deal with unauthorized users
+        
+        # For other commands, send the unauthorized message
+        await send_unauthorized_message(message)
+        return False
 
     authorized = create(authorized_user)
 

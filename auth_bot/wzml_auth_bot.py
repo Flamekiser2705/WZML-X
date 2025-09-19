@@ -63,7 +63,13 @@ class WZMLAuthBot:
             print_config_status()
             
             # Validate configuration
-            errors = validate_config()
+            errors, warnings = validate_config()
+            
+            if warnings:
+                logger.warning("[WARNING] Configuration warnings:")
+                for warning in warnings:
+                    logger.warning(f"  - {warning}")
+            
             if errors:
                 logger.error("[ERROR] Configuration errors:")
                 for error in errors:
@@ -130,6 +136,29 @@ class WZMLAuthBot:
         except Exception as e:
             logger.error(f"[ERROR] Database initialization failed: {e}")
             return False
+    
+    async def cleanup(self):
+        """Cleanup resources when shutting down"""
+        try:
+            logger.info("[CLEANUP] Starting cleanup process...")
+            
+            # Close MongoDB connection
+            if hasattr(self, 'client') and self.client:
+                self.client.close()
+                logger.info("[CLEANUP] MongoDB connection closed")
+            
+            # Stop Pyrogram client
+            if self.app:
+                try:
+                    await self.app.stop()
+                    logger.info("[CLEANUP] Pyrogram client stopped")
+                except Exception as e:
+                    logger.warning(f"[CLEANUP] Error stopping Pyrogram client: {e}")
+            
+            logger.info("[CLEANUP] Cleanup completed")
+            
+        except Exception as e:
+            logger.error(f"[CLEANUP] Error during cleanup: {e}")
     
     def setup_handlers(self):
         """Setup message handlers according to sample images"""
@@ -1351,7 +1380,16 @@ You are Verified with **{verified_count} token**.
     
     async def show_premium_options(self, callback_query):
         """Show premium subscription options"""
-        premium_text = f"""
+        try:
+            # Check if any payment gateways are configured
+            from utils.main_config import get_payment_status
+            payment_status = get_payment_status()
+            
+            if not payment_status["any_configured"]:
+                await callback_query.answer("❌ Premium subscriptions not available. No payment gateways configured by admin.", show_alert=True)
+                return
+            
+            premium_text = f"""
 💎 **Premium Subscription Plans**
 
 🚀 **Skip all shorteners and get instant access!**
@@ -1368,12 +1406,18 @@ You are Verified with **{verified_count} token**.
 • Priority support
 • No ads
 
-💳 **Payment Methods:**
-• UPI/Card (Razorpay) - ₹ Indian Rupees
-• PayPal (International) - $ US Dollars
-
-💎 **Choose Your Plan:**
-"""
+💳 **Payment Methods:**"""
+            
+            # Add available payment methods based on configuration
+            if payment_status["razorpay"]:
+                premium_text += "\n• UPI/Card (Razorpay) - ₹ Indian Rupees"
+            if payment_status["paypal"]:
+                premium_text += "\n• PayPal (International) - $ US Dollars"
+            
+            premium_text += "\n\n💎 **Choose Your Plan:**"
+        except ImportError:
+            await callback_query.answer("❌ Payment system not available.", show_alert=True)
+            return
         
         keyboard = InlineKeyboardMarkup([
             [
@@ -1649,7 +1693,8 @@ Select a shortener service to complete Token {token_num} verification:
                     if self.app:
                         try:
                             await self.app.stop()
-                        except:
+                        except Exception as e:
+                            logger.warning(f"[CLIENT] Error stopping app during retry: {e}")
                             pass
                         # Wait for proper cleanup
                         await asyncio.sleep(1)
@@ -1708,8 +1753,8 @@ Select a shortener service to complete Token {token_num} verification:
         try:
             logger.info("[STOP] Stopping WZML-X Auth Bot...")
             
-            if self.app:
-                await self.app.stop()
+            # Use the cleanup method for proper resource management
+            await self.cleanup()
             
             logger.info("[SUCCESS] Bot stopped successfully")
             
@@ -1725,10 +1770,15 @@ Select a shortener service to complete Token {token_num} verification:
         """Start real shortener verification for a specific token"""
         user = callback_query.from_user
         
-        # Check if user has active multi-session
-        user_data = await self.user_collection.find_one({"user_id": user.id})
-        if not user_data or "multi_session" not in user_data:
-            await callback_query.message.edit_text("❌ No active token session found.")
+        try:
+            # Check if user has active multi-session
+            user_data = await self.user_collection.find_one({"user_id": user.id})
+            if not user_data or "multi_session" not in user_data:
+                await callback_query.message.edit_text("❌ No active token session found.")
+                return
+        except Exception as e:
+            logger.error(f"[DATABASE] Error fetching user data: {e}")
+            await callback_query.message.edit_text("❌ Database error. Please try again later.")
             return
         
         token_key = f"token_{token_num}"
@@ -1748,21 +1798,33 @@ Select a shortener service to complete Token {token_num} verification:
         )
         
         # Generate real GPLinks verification URL
-        from shortener_handler import short_url
-        original_url = f"https://t.me/{self.app.me.username}?start=verify_{verification_token}_{user.id}"
-        verification_url = short_url(original_url)
+        try:
+            from shortener_handler import short_url
+            original_url = f"https://t.me/{self.app.me.username}?start=verify_{verification_token}_{user.id}"
+            verification_url = short_url(original_url)
+        except ImportError as e:
+            logger.error(f"[SHORTENER] Shortener handler not available: {e}")
+            verification_url = original_url  # Fallback to original URL
+        except Exception as e:
+            logger.error(f"[SHORTENER] Error generating short URL: {e}")
+            verification_url = original_url  # Fallback to original URL
         
         # Store verification data
-        await self.user_collection.update_one(
-            {"user_id": user.id},
-            {"$set": {f"verification_data.{token_num}": {
-                "verification_token": verification_token,
-                "verification_url": verification_url,
-                "token_key": token_key,
-                "timestamp": datetime.now().isoformat()
-            }}},
-            upsert=True
-        )
+        try:
+            await self.user_collection.update_one(
+                {"user_id": user.id},
+                {"$set": {f"verification_data.{token_num}": {
+                    "verification_token": verification_token,
+                    "verification_url": verification_url,
+                    "token_key": token_key,
+                    "timestamp": datetime.now().isoformat()
+                }}},
+                upsert=True
+            )
+        except Exception as e:
+            logger.error(f"[DATABASE] Error storing verification data: {e}")
+            await callback_query.message.edit_text("❌ Database error. Please try again later.")
+            return
         
         verification_text = f"""
 🔗 **Token {token_num} Verification**
@@ -1795,10 +1857,15 @@ Click the verification link below to complete Token {token_num} verification:
         """Complete shortener verification and mark token as verified"""
         user = callback_query.from_user
         
-        # Check verification data
-        user_data = await self.user_collection.find_one({"user_id": user.id})
-        if not user_data or "verification_data" not in user_data:
-            await callback_query.answer("❌ No verification data found.", show_alert=True)
+        try:
+            # Check verification data
+            user_data = await self.user_collection.find_one({"user_id": user.id})
+            if not user_data or "verification_data" not in user_data:
+                await callback_query.answer("❌ No verification data found.", show_alert=True)
+                return
+        except Exception as e:
+            logger.error(f"[DATABASE] Error fetching verification data: {e}")
+            await callback_query.answer("❌ Database error. Please try again later.", show_alert=True)
             return
         
         verification_info = user_data["verification_data"].get(str(token_num))
@@ -1813,41 +1880,51 @@ Click the verification link below to complete Token {token_num} verification:
             return
         
         # Mark token as verified in database
-        await self.user_collection.update_one(
-            {"user_id": user.id},
-            {
-                "$set": {f"multi_session.token_{token_num}.verified": True},
-                "$unset": {f"verification_data.{token_num}": ""}
-            }
-        )
-        
-        # Get updated user data
-        user_data = await self.user_collection.find_one({"user_id": user.id})
-        session_data = user_data["multi_session"]
-        verified_count = sum(1 for t in session_data.values() if t.get("verified", False))
+        try:
+            await self.user_collection.update_one(
+                {"user_id": user.id},
+                {
+                    "$set": {f"multi_session.token_{token_num}.verified": True},
+                    "$unset": {f"verification_data.{token_num}": ""}
+                }
+            )
+            
+            # Get updated user data
+            user_data = await self.user_collection.find_one({"user_id": user.id})
+            session_data = user_data["multi_session"]
+            verified_count = sum(1 for t in session_data.values() if t.get("verified", False))
+        except Exception as e:
+            logger.error(f"[DATABASE] Error updating verification status: {e}")
+            await callback_query.answer("❌ Database error. Please try again later.", show_alert=True)
+            return
         
         # Add to main tokens collection if verified
-        token_data = session_data[f"token_{token_num}"]
-        await self.tokens_collection.update_one(
-            {"user_id": user.id, "bot_key": token_data["bot_key"]},
-            {
-                "$set": {
-                    "token": token_data["token"],
-                    "expires_at": token_data["expires_at"],
-                    "type": "free_multi",
-                    "verified": True,
-                    "updated_at": datetime.now().isoformat()
-                }
-            },
-            upsert=True
-        )
-        
-        # Update stats
-        await self.stats_collection.update_one(
-            {"_id": "global"},
-            {"$inc": {"total_tokens": 1}},
-            upsert=True
-        )
+        try:
+            token_data = session_data[f"token_{token_num}"]
+            await self.tokens_collection.update_one(
+                {"user_id": user.id, "bot_key": token_data["bot_key"]},
+                {
+                    "$set": {
+                        "token": token_data["token"],
+                        "expires_at": token_data["expires_at"],
+                        "type": "free_multi",
+                        "verified": True,
+                        "updated_at": datetime.now().isoformat()
+                    }
+                },
+                upsert=True
+            )
+            
+            # Update stats
+            await self.stats_collection.update_one(
+                {"_id": "global"},
+                {"$inc": {"total_tokens": 1}},
+                upsert=True
+            )
+        except Exception as e:
+            logger.error(f"[DATABASE] Error storing token data: {e}")
+            await callback_query.answer("❌ Database error storing token. Please contact support.", show_alert=True)
+            return
         
         success_text = f"""
 ✅ **Token {token_num} Verified Successfully!**
@@ -1914,6 +1991,14 @@ Click the verification link below to complete Token {token_num} verification:
         user = callback_query.from_user
         
         try:
+            # Check if Razorpay is configured
+            from utils.main_config import get_payment_status
+            payment_status = get_payment_status()
+            
+            if not payment_status["razorpay"]:
+                await callback_query.answer("❌ Razorpay payment not configured by admin.", show_alert=True)
+                return
+            
             from payments import create_payment, get_plan_details
             
             plan_details = get_plan_details(plan_type)
@@ -1926,20 +2011,25 @@ Click the verification link below to complete Token {token_num} verification:
             
             if payment_result:
                 # Store payment order in database
-                await self.user_collection.update_one(
-                    {"user_id": user.id},
-                    {"$set": {
-                        "pending_payment": {
-                            "provider": "razorpay",
-                            "plan_type": plan_type,
-                            "order_id": payment_result["order_id"],
-                            "amount": payment_result["amount"],
-                            "currency": payment_result["currency"],
-                            "created_at": datetime.now().isoformat()
-                        }
-                    }},
-                    upsert=True
-                )
+                try:
+                    await self.user_collection.update_one(
+                        {"user_id": user.id},
+                        {"$set": {
+                            "pending_payment": {
+                                "provider": "razorpay",
+                                "plan_type": plan_type,
+                                "order_id": payment_result["order_id"],
+                                "amount": payment_result["amount"],
+                                "currency": payment_result["currency"],
+                                "created_at": datetime.now().isoformat()
+                            }
+                        }},
+                        upsert=True
+                    )
+                except Exception as e:
+                    logger.error(f"[DATABASE] Error storing payment order: {e}")
+                    await callback_query.answer("❌ Database error. Please try again later.", show_alert=True)
+                    return
                 
                 payment_text = f"""
 💳 **Razorpay Payment - {plan_details['name']}**
